@@ -1,4 +1,4 @@
-import NavBar from './NavBar';
-import Info from "./Info";
+import { Info, NavBar } from "./LandingPage";
+import { BetaInfo, BetaNavBar } from "./BetaPage";
 
-export { NavBar, Info };
+export { Info, NavBar, BetaInfo, BetaNavBar };

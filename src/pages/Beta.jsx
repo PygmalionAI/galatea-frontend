@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter } from 'react-router-dom';
-import { NavBar, Info } from '../components' 
+import { BetaNavBar, BetaInfo } from '../components' 
 
-const Landing = () => {
+const App = () => {
   useEffect(() => {
     const numStars = 10; // Number of shooting stars to generate
 
@@ -25,8 +25,8 @@ const Landing = () => {
           <div className="absolute w-full h-full">
             <div className="absolute inset-0 flex justify-center items-center star-container"></div>
           </div>
-          <NavBar />
-          <Info />
+          <BetaNavBar />
+          <BetaInfo />
         </div>
         <div className="relative z-0"></div>
       </div>
@@ -34,4 +34,4 @@ const Landing = () => {
   );
 };
 
-export default Landing;
+export default App;

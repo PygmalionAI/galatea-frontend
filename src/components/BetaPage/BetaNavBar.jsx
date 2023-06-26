@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import { styles } from '../styles';
-import { pygchiselsvg, menu, close } from '../assets';
+import { styles } from '../../styles';
+import { pygchiselsvg, menu, close } from '../../assets';
 
 const NavBar = () => {
   const [active, setActive] = useState('');
@@ -17,26 +17,26 @@ const NavBar = () => {
       <div>
         <ul className="list-none hidden md:flex flex-row gap-10">
           <li>
-            <a href="https://discord.gg/pygmalionai" target="_blank" rel="noopener noreferrer">Discord</a>
+            <a href="https://discord.gg/pygmalionai" target="_blank" rel="noopener noreferrer" className="underline-animation">Discord</a>
           </li>
           <li>
-            <a href="https://docs.pygmalion.chat" target="_blank" rel="noopener noreferrer">Docs</a>
+            <a href="https://docs.pygmalion.chat" target="_blank" rel="noopener noreferrer" className="underline-animation">Docs</a>
           </li>
           <li>
-            <a href="https://huggingface.co/PygmalionAI" target="_blank" rel="noopener noreferrer">HuggingFace</a>
+            <a href="https://huggingface.co/PygmalionAI" target="_blank" rel="noopener noreferrer" className="underline-animation">HuggingFace</a>
           </li>
           <li>
-            <a href="https://github.com/PygmalionAI" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="https://github.com/PygmalionAI" target="_blank" rel="noopener noreferrer" className="underline-animation">GitHub</a>
           </li>
         </ul>
       </div>
       <div className="hidden md:flex">
-        <button className="text-white h-10 px-5 pink-gradient-background rounded-full mr-3 scale-10">Login</button>
-        <button className="text-white">Sign up</button>
+        <button className="text-white h-10 px-5 pink-gradient-background rounded-full mr-3 scale-10">Account</button>
+        <button className="text-white">Log Out</button>
       </div>
       <div className="md:hidden flex flex-1 justify-end items-center">
         <img src={toggle ? close : menu} alt="menu" className='w-[28px] h-[28px] object-contain cursor-pointer' onClick={() => setToggle(!toggle)}/>
-        <div className={`${ !toggle ? "hidden" : "flex" } p-6 black-gradient absolute top-20 right-0 mx-4 my-2 min-w-[140px] z-10 rounded-xl`}>
+        <div className={`${ !toggle ? "hidden" : "flex" } p-6 landing-gradient absolute top-20 right-0 mx-4 my-2 min-w-[140px] z-10 rounded-xl`}>
           <ul className="list-none flex justify-end items-start flex-1 flex-col gap-4">
           <li>
             <a href="https://discord.gg/pygmalionai" target="_blank" rel="noopener noreferrer">Discord</a>
@@ -51,7 +51,10 @@ const NavBar = () => {
             <a href="https://github.com/PygmalionAI" target="_blank" rel="noopener noreferrer">GitHub</a>
           </li>
           <li>
-            <a>Login/Register</a>
+            <a>Account</a>
+          </li>
+          <li>
+            <a>Log out</a>
           </li>
           </ul>
         </div>

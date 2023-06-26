@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 
-import { styles } from '../styles';
+import { styles } from '../../styles';
 
 const Info = () => {
   return (
