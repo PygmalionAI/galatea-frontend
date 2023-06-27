@@ -31,7 +31,7 @@ const NavBar = () => {
         </ul>
       </div>
       <div className="hidden md:flex">
-        <button className="text-white h-10 px-5 pink-gradient-background rounded-full mr-3 scale-10">Login</button>
+        <button className="text-white h-10 px-5 pink-gradient-background rounded-full mr-3 scale-10"><Link to={"/login"}>Login</Link></button>
         <button className="text-white">Sign up</button>
       </div>
       <div className="md:hidden flex flex-1 justify-end items-center">
