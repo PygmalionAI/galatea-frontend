@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 
 import { styles } from '../../styles';
 
-const Info = () => {
+const BetaInfo = () => {
   return (
     <section className="relative w-full h-screen mx-auto">
       <div className={`${styles.paddingX} absolute inset-0 top-[25%] max-w-7xl mx-auto flex flex-row items-start gap-5`}>
@@ -22,4 +22,4 @@ const Info = () => {
   )
 }
 
-export default Info
+export default BetaInfo

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { BetaNavBar, BetaInfo } from '../components' 
 
-const App = () => {
+const Beta = () => {
   useEffect(() => {
     const numStars = 10; // Number of shooting stars to generate
 
@@ -34,4 +34,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default Beta;

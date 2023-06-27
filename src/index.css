@@ -38,6 +38,19 @@ body {
   background: #9840a0
 }
 
+/* Galatea Animations */
+@keyframes pinkColorChange {
+  0% {
+    color: #000; /* Initial color */
+  }
+  50% {
+    color: #9840a0; /* Target color */
+  }
+  100% {
+    color: #000; /* Initial color */
+  }
+}
+
 /* Color Schemes Misc */
 
 .landing-gradient {
