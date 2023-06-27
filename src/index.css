@@ -25,6 +25,18 @@ body {
 
 /* INSERT UI THEMES BELOW HERE BUT ABOVE "Color Schemes Misc" */
 
+/* Galatea Main Theme */
+.ga-black {
+  background: #090b10
+}
+
+.ga-lightblack {
+  background: #0d1017
+}
+
+.ga-pink {
+  background: #9840a0
+}
 
 /* Color Schemes Misc */
 
