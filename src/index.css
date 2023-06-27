@@ -13,6 +13,11 @@
   color-scheme: dark;
 }
 
+/** Global focus style override. */
+*:focus {
+  @apply outline-none outline-purple-400/50;
+}
+
 body {
   overflow: hidden;
 }
@@ -27,15 +32,99 @@ body {
 
 /* Galatea Main Theme */
 .ga-black {
-  background: #090b10
+  background: #090b10;
 }
 
 .ga-lightblack {
-  background: #0d1017
+  background: #0d1017;
 }
 
 .ga-pink {
-  background: #9840a0
+  background: #9840a0;
+}
+
+@layer base {
+  /**
+   * Scrollbar
+   */
+
+  ::-webkit-scrollbar {
+    @apply h-1 w-1;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-white/10;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-purple-600;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-purple-500;
+  }
+}
+  /** For Firefox. */
+  .scrollbar {
+    scrollbar-color: rgb(152 64 160) transparent;
+    scrollbar-width: thin;
+  }
+
+/**
+   * Focus/accessibility-related utilities.
+*/
+._focusable-base {
+  @apply transition-all duration-100;
+}
+
+.focusable-field {
+  @apply _focusable-base;
+  @apply bg-white/5 hover:bg-white/[0.075] active:bg-white/20;
+  @apply placeholder:text-white/25;
+}
+
+.focusable-icon-button {
+  @apply _focusable-base;
+  @apply text-white/50 hover:text-white focus:text-white;
+}
+
+/** Integrates with solid-router - highlights current selection. */
+.focusable-icon-button.active {
+  @apply text-white;
+}
+
+/**
+ * Buttons.
+*/
+.btn-base {
+  @apply flex gap-1;
+  @apply transition-colors duration-100;
+  @apply rounded-md px-3 py-2;
+}
+
+.btn-primary {
+  @apply btn-base;
+  @apply bg-purple-600 enabled:hover:bg-purple-500 enabled:active:bg-purple-400;
+  @apply disabled:cursor-not-allowed disabled:bg-purple-900 disabled:text-white/25;
+}
+
+.btn-secondary {
+  @apply btn-base;
+  @apply bg-stone-600 hover:bg-stone-500 active:bg-stone-400;
+}
+
+/**
+   * Cards.
+*/
+.focusable-card {
+  @apply _focusable-base;
+  @apply max-h-96 max-w-[10rem];
+  @apply rounded-md shadow-md;
+  @apply bg-background-lighter hover:bg-zinc-900 active:bg-zinc-800;
+}
+
+/**
+   * Other form stuff.
+*/
+.form-check-input:checked[type="radio"] {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%22-4 -4 8 8%22%3E%3Ccircle r=%222%22 fill=%22%23fff%22/%3E%3C/svg%3E");
 }
 
 /* Galatea Animations */
@@ -68,11 +157,11 @@ body {
 }
 
 .violet-gradient {
-  background: #D021A1;
-  background: linear-gradient(-90deg, #D021A1 0%, rgba(60, 51, 80, 0) 100%);
+  background: #d021a1;
+  background: linear-gradient(-90deg, #d021a1 0%, rgba(60, 51, 80, 0) 100%);
   background: -webkit-linear-gradient(
     -90deg,
-    #D021A1 0%,
+    #d021a1 0%,
     rgba(60, 51, 80, 0) 100%
   );
 }
@@ -155,11 +244,7 @@ body {
     #ec008c,
     #fc6767
   ); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(
-    to top,
-    #ec008c,
-    #fc6767
-  );
+  background: linear-gradient(to top, #ec008c, #fc6767);
 }
 
 /* For Animating Underlined Text */
@@ -171,7 +256,7 @@ body {
 }
 
 .underline-animation::after {
-  content: '';
+  content: "";
   position: absolute;
   left: 0;
   bottom: -2px;
@@ -182,7 +267,7 @@ body {
 }
 
 .underline-animation.lightblue::after {
-  background-color: #1A78D6; 
+  background-color: #1a78d6;
 }
 
 .underline-animation:hover::after {
@@ -224,7 +309,6 @@ body {
     transform: translate(50px, 50px);
   }
 }
-
 
 @keyframes mulShdSpin {
   0%,
