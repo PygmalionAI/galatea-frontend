@@ -22,9 +22,9 @@ const LoginForm = (props) => {
         />
       </div>
 
-      <Button type="submit" disabled={props.isLoading} primary><Link to={"/beta"}>
+      <Button type="submit" disabled={props.isLoading} primary>
       {props.isLoading ? "Logging in..." : "Log in"}
-      </Link></Button>
+      </Button>
     </form>
   )
 }
