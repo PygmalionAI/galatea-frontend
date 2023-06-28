@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { Beta, Landing, Login, Chat } from './pages';
+import { Beta, Landing, Login, Chat, Register } from './pages';
 const App = () => {
   return (
     <Router>
@@ -9,6 +9,7 @@ const App = () => {
         <Route path="/beta" element={<Beta />} />
         <Route path="/login" element={<Login />} />
         <Route path="/chat" element={<Chat />} />
+        <Route path="/register" element={<Register />} />
       </Routes>
     </Router>
   );
