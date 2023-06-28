@@ -1,19 +1,27 @@
-import { MessageCircle, Settings, User, Users, LogOut } from "lucide-react";
+import React from 'react';
+import { User, Users, MessageCircle, Settings, LogOut } from "lucide-react";
+import { useLocation } from 'react-router-dom';
+import Toggle from './Toggle.jsx';
 
-const NavBar = () => (
-  <span className="flex justify-between gap-4 bg-background-lighter px-8 py-5 shadow-xl max-sm:p-3">
-    <span className="flex items-center gap-2 font-semibold">
-      <a href="/">
-        Pygmalion<span class="text-purple-400">AI</span>
-      </a>
-    </span>
+const NavBar = () => {
+  const location = useLocation();
+
+  return (
+<span className="flex justify-between items-center gap-4 bg-background-lighter px-8 py-3 shadow-xl max-sm:p-3">
+  <span className="flex items-center gap-2 font-semibold">
+    <a href="/">
+      Pygmalion<span className="text-purple-400">AI</span>
+    </a>
+    <Toggle/>
+  </span>
+
     <span className="flex gap-4">
       <a
         aria-label="Character Settings"
         className="focusable-icon-button rounded p-1"
         href="/account"
       >
-        <User />
+        <User style={location.pathname === "/account" ? { color: 'white' } : {}} />
     </a>
 
       <a
@@ -21,7 +29,7 @@ const NavBar = () => (
         className="focusable-icon-button rounded p-1"
         href="/character"
       >
-        <Users />
+        <Users style={location.pathname === "/character" ? { color: 'white' } : {}} />
   </a>
 
       <a
@@ -29,7 +37,7 @@ const NavBar = () => (
         className="focusable-icon-button rounded p-1"
         href="/chat"
       >
-        <MessageCircle />
+        <MessageCircle style={location.pathname === "/chat" ? { color: 'white' } : {}} />
 </a>
 
       <a
@@ -37,7 +45,7 @@ const NavBar = () => (
         className="focusable-icon-button rounded p-1"
         href="/generation-settings"
       >
-        <Settings />
+        <Settings style={location.pathname === "/generation-settings" ? { color: 'white' } : {}} />
 </a>
 
 <a
@@ -49,6 +57,6 @@ const NavBar = () => (
 </a>
     </span>
   </span>
-);
+)};
 
 export default NavBar;

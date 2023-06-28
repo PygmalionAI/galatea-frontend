@@ -30,6 +30,11 @@ body {
 
 /* INSERT UI THEMES BELOW HERE BUT ABOVE "Color Schemes Misc" */
 
+:root {
+  /*Dark theme variables*/
+  --ga-black: #090b10;
+  --ga-lightblack: #0d1017;
+}
 /* Galatea Main Theme */
 .ga-black {
   background: #090b10;
@@ -43,6 +48,14 @@ body {
   background: #9840a0;
 }
 
+/* Galatea Light Theme */
+.ga-white {
+  background: #dfe3e6;
+}
+
+.ga-pink {
+  background: #9840a0;
+}
 @layer base {
   /**
    * Scrollbar
