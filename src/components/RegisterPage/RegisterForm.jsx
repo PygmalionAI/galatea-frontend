@@ -30,7 +30,7 @@ const RegisterForm = (props) => {
       </div>
 
       <Button type="submit" disabled={props.isLoading} primary>
-      {props.isLoading ? "Logging in..." : "Log in"}
+      {props.isLoading ? "Creating Your Account..." : "Sign Up"}
       </Button>
     </form>
   )
