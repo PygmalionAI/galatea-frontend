@@ -1,13 +1,14 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter } from 'react-router-dom';
-import { LoginNavBar, LoginForm } from '../components' 
+import { LoginForm } from '../components' 
+import { SimpleNavBar } from '../components';
 
 const Login = () => {
   return (
     <>
     <div className="ga-black scrollbar-thin scrollbar-thumb-white/10 scrollbar-track-purple/900 scrollbar flex h-screen flex-col">
       <div>
-        <LoginNavBar />
+        <SimpleNavBar />
       </div>
       <div className="w-full flex justify-center mt-10">
         <div className="my-4 border-b border-white/5" />

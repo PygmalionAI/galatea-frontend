@@ -1,9 +1,9 @@
 import { LogOut } from 'lucide-react';
-import Toggle from '../Shared/Toggle';
+import Toggle from './Toggle';
 
-const LoginNavBar = () => {
+const SimpleNavBar = () => {
   return (
-    <nav className="flex justify-between gap-4 ga-lightblack px-8 py-3 shadow-xl max-sm:p-3">
+    <nav className="flex justify-between items-center gap-4 bg-background-lighter px-8 py-3 shadow-xl max-sm:p-3">
       <div className="flex items-center gap-2 font-semibold">
         <a href="/" className="flex items-center">
           Pygmalion<span className="text-purple-400">AI</span>
@@ -19,4 +19,4 @@ const LoginNavBar = () => {
   );
 };
 
-export default LoginNavBar;
+export default SimpleNavBar;

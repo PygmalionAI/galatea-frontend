@@ -1,4 +1,4 @@
-import LoginNavBar from "./LoginNavBar";
+import SimpleNavBar from "../Shared/SimpleNavBar";
 import LoginForm from "./LoginForm";
 
-export { LoginNavBar, LoginForm }
+export { SimpleNavBar, LoginForm }

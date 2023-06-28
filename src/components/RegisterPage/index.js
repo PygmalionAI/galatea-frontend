@@ -1,4 +1,4 @@
-import RegisterNavBar from "./RegisterNavBar";
+import SimpleNavBar from "../Shared/SimpleNavBar";
 import RegisterForm from "./RegisterForm";
 
-export { RegisterNavBar, RegisterForm };
+export { SimpleNavBar, RegisterForm };

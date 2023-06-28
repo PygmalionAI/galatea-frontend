@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter } from 'react-router-dom';
-import { LoginNavBar, Header, InputBar } from '../components'
+import { Header, InputBar } from '../components'
 import { mockMessages } from '../components/ChatPage/mockMessage';
 import Message from '../components/ChatPage/Message';
 import NavBar from '../components/Shared/NavBar';
