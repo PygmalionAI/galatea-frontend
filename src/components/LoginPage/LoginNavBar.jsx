@@ -9,7 +9,7 @@ const LoginNavBar = () => {
         </a>
       </div>
       <div className="flex gap-4">
-        <a aria-label="Back" href="/" className="relative">
+        <a aria-label="Back" href="/" className="relative focusable-icon-button rounded p-1">
           <LogOut />
         </a>
       </div>
