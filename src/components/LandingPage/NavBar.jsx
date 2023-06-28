@@ -32,7 +32,7 @@ const NavBar = () => {
       </div>
       <div className="hidden md:flex">
         <button className="text-white h-10 px-5 pink-gradient-background rounded-full mr-3 scale-10"><Link to={"/login"}>Login</Link></button>
-        <button className="text-white">Sign up</button>
+        <button className="text-white"><Link to={"/register"}>Sign Up</Link></button>
       </div>
       <div className="md:hidden flex flex-1 justify-end items-center">
         <img src={toggle ? close : menu} alt="menu" className='w-[28px] h-[28px] object-contain cursor-pointer' onClick={() => setToggle(!toggle)}/>
