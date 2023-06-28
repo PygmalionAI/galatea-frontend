@@ -1,21 +1,30 @@
 import { MessageCircle } from "lucide-react";
+import PropTypes from 'prop-types';
 
-/** The header shown at the beginning of a conversation. */
-const Header = () => (
+/**The header shown at the beginning of a conversation.*/
+const Header = (props) => (
   <>
-    <div class="mt-8 flex flex-col gap-3">
-      <div class="w-fit rounded-full bg-white/10 p-3">
-        <MessageCircle class="text-white/75" size={32} />
+    <div className="mt-8 flex flex-col gap-3">
+      <div className="w-fit rounded-full bg-white/10 p-3">
+        <MessageCircle className="text-white/75" size={32} />
       </div>
-      <h1 class="text-4xl font-bold text-white">
-        Emily
+      <h1 className="text-4xl font-bold text-white">
+        {props.participants.join(", ")}
       </h1>
-      <h2 class="text-lg text-white/75">
-          This is the beginning of your conversation with Emily
+      <h2 className="text-lg text-white/75">
+        {
+          props.participants.length === 1 ?
+            <>This is the beginning of your conversation with {props.participants[0]}.</> :
+            <>This is the beginning of the group conversation.</>
+        }
       </h2>
-      <div class="border-b border-white/10" />
+      <div className="border-b border-white/10" />
     </div>
   </>
 );
+
+Header.propTypes = {
+  participants: PropTypes.array.isRequired
+}
 
 export default Header;

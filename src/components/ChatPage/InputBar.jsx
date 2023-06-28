@@ -12,11 +12,11 @@ const IconButton = ({ children }) => (
 
 /** Bar containing the message text input and some attached buttons. */
 const InputBar = () => (
-  <div class="flex justify-center pb-4 max-sm:pb-0">
+  <div className="flex justify-center pb-4 w-full">
     <input
       type="text"
       placeholder="Send a message..."
-      class="focusable-field w-full rounded-l-xl px-4 py-2"
+      className="focusable-field w-full rounded-l-xl px-4 py-2"
     />
     <IconButton>
       <Sliders size={20} />
@@ -24,7 +24,7 @@ const InputBar = () => (
     <IconButton>
       <Send size={20} />
     </IconButton>
-    <div class="rounded-r-xl bg-white/5 pr-2" />
+    <div className="rounded-r-xl bg-white/5 pr-2" />
   </div>
 );
 
