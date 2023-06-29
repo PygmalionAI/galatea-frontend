@@ -1,6 +1,8 @@
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import dotenv from 'dotenv';
 import User from "../schemas/users";
+dotenv.config();
 
 /* Register the User in MongoDB, Hash PW */
 export const register = async (req, res) => {
