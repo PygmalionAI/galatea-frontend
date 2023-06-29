@@ -12,6 +12,7 @@
   "dependencies": {
     "@react-three/drei": "^9.77.3",
     "@react-three/fiber": "^8.13.3",
+    "dotenv": "^16.3.1",
     "framer-motion": "^10.12.17",
     "lucide-react": "^0.252.0",
     "maath": "^0.7.0",
