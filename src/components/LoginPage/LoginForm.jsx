@@ -1,16 +1,14 @@
 import React, { useState } from 'react';
-import { styles } from '../../styles';
+// import { styles } from '../../styles';
 import { TextInput, Button } from '../Shared';
 import { Eye, EyeOff } from 'lucide-react'
 
 const LoginForm = (props) => {
-  const [isLoading, setIsLoading] = useState('');
+ // const [isLoading, setIsLoading] = useState('');
   const [isPasswordVisible, setPasswordVisible] = useState(false);
-  const [isConfirmPasswordVisible, setConfirmPasswordVisible] = useState(false);
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    // Perform any desired logic or actions
   };
 
   return (
