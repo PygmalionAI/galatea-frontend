@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
 
 const User = ({ id, email, displayName }) => {
-    // Your component logic and return statement here...
 };
 
 // Define propTypes after the component
