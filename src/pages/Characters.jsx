@@ -2,10 +2,10 @@ import React from 'react'
 import { useEffect, useState } from 'react'
 import { NavBar } from '../components'
 
-const Character = () => {
+const Characters = () => {
   return (
     <NavBar/>
   )
 }
 
-export default Character
+export default Characters

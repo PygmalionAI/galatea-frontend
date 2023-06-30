@@ -4,6 +4,6 @@ import Login from "./Login";
 import Chat from "./Chat";
 import Register from "./Register";
 import Account from "./Account";
-import Character from './Character';
+import Characters from './Characters';
 
-export { Beta, Landing, Login, Chat, Register, Account, Character };
+export { Beta, Landing, Login, Chat, Register, Account, Characters };
