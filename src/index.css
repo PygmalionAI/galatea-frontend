@@ -32,9 +32,19 @@ body {
 
 :root {
   /*Dark theme variables*/
-  --ga-black: #090b10;
-  --ga-lightblack: #0d1017;
+  --ga-default: #090b10;
+  --ga-lighter: #0d1017;
+  --ga-text: #fff;
 }
+
+.light {
+  --ga-default: #FDF4F5;
+  --ga-lighter: #FDF4F5;
+  --ga-text: #090b10;
+  --ga-pink: #9840a0;
+
+}
+
 /* Galatea Main Theme */
 .ga-black {
   background: #090b10;
