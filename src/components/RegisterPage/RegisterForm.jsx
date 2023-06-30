@@ -1,12 +1,10 @@
 import React, { useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-// import { styles } from '../../styles';
 import { Eye, EyeOff } from 'lucide-react'
 import { TextInput, Button } from '../Shared';
 import firebase from '../../firebaseConfig';
 
 const RegisterForm = (props) => {
-  // const [isLoading, setIsLoading] = useState('');
   const [isPasswordVisible, setPasswordVisible] = useState(false);
   const [isConfirmPasswordVisible, setConfirmPasswordVisible] = useState(false);
 
@@ -16,14 +14,21 @@ const RegisterForm = (props) => {
     evt.preventDefault();
     try {
       // Get the values entered by the user
+      const username = evt.target.username.value;
       const email = evt.target.email.value;
       const password = evt.target.password.value;
-      
+
       // Call the Firebase authentication method to create a new user
-      await firebase.auth().createUserWithEmailAndPassword(email, password);
+      const userCredential = await firebase.auth().createUserWithEmailAndPassword(email, password);
+      const user = userCredential.user;
+
+      // Update the user's display name with the username
+      await user.updateProfile({
+        displayName: username
+      });
 
       navigateTo("/login");
-      
+
       // You can add further logic or redirect to a different page upon successful sign-up
       console.log('User account created successfully!');
     } catch (error) {
@@ -39,51 +44,52 @@ const RegisterForm = (props) => {
       <div className="flex flex-col gap-2">
         <TextInput fieldName="username" placeholder="Username" type="text" required />
         <TextInput fieldName="email" placeholder="Email" type="email" required />
-      <div className="relative">
-        <TextInput
-          fieldName="password"
-          placeholder="Password"
-          type={isPasswordVisible ? "text" : "password"}
-          required
-        />
-      <button
-        onClick={(e) => {
-        e.preventDefault();
-        setPasswordVisible(prevState => !prevState)}}
-        className="absolute right-2 top-1/2 transform -translate-y-1/2"
-      >
-          { isPasswordVisible ? <Eye /> : <EyeOff /> }
-      </button>
-      </div>
+        <div className="relative">
+          <TextInput
+            fieldName="password"
+            placeholder="Password"
+            type={isPasswordVisible ? "text" : "password"}
+            required
+          />
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              setPasswordVisible(prevState => !prevState);
+            }}
+            className="absolute right-2 top-1/2 transform -translate-y-1/2"
+          >
+            {isPasswordVisible ? <Eye /> : <EyeOff />}
+          </button>
+        </div>
 
-      <div className="relative">
-        <TextInput
-          fieldName="confirmpassword"
-          placeholder="Confirm Password"
-          type={isConfirmPasswordVisible ? "text" : "password"}
-          required
-          onKeyDown={(event) => {
-            if (event.key === 'Enter') {
-              submitButtonRef.current.click();
-            }
-          }}
-        />
-       <button
-        onClick={(e) => {
-        e.preventDefault();
-        setConfirmPasswordVisible(prevState => !prevState);
-        }}
-        className="absolute right-2 top-1/2 transform -translate-y-1/2"
-        >
-        { isConfirmPasswordVisible ? <Eye /> : <EyeOff /> }
-        </button>
-      </div>
-      <Button type="submit" disabled={props.isLoading} primary ref={submitButtonRef}>
-        {props.isLoading ? "Creating Your Account..." : "Sign Up"}
-      </Button>
+        <div className="relative">
+          <TextInput
+            fieldName="confirmpassword"
+            placeholder="Confirm Password"
+            type={isConfirmPasswordVisible ? "text" : "password"}
+            required
+            onKeyDown={(event) => {
+              if (event.key === 'Enter') {
+                submitButtonRef.current.click();
+              }
+            }}
+          />
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              setConfirmPasswordVisible(prevState => !prevState);
+            }}
+            className="absolute right-2 top-1/2 transform -translate-y-1/2"
+          >
+            {isConfirmPasswordVisible ? <Eye /> : <EyeOff />}
+          </button>
+        </div>
+        <Button type="submit">
+          Sign Up
+        </Button>
       </div>
     </form>
-  )
-}
+  );
+};
 
-export default RegisterForm
+export default RegisterForm;

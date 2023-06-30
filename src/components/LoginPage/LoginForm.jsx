@@ -51,8 +51,8 @@ const LoginForm = (props) => {
       </button>
       </div>
       </div>
-      <Button type="submit" disabled={props.isLoading} primary>
-      {props.isLoading ? "Logging in..." : "Log in"}
+      <Button type="submit" primary>
+      Log In
       </Button>
     </form>
   )
