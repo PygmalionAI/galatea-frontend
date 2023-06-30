@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter } from 'react-router-dom';
-import { NavBar, Info } from '../components' 
+import { LandingNavBar, Info } from '../components' 
 
 const Landing = () => {
   useEffect(() => {
@@ -25,7 +25,7 @@ const Landing = () => {
           <div className="absolute w-full h-full">
             <div className="absolute inset-0 flex justify-center items-center star-container"></div>
           </div>
-          <NavBar />
+          <LandingNavBar />
           <Info />
         </div>
         <div className="relative z-0"></div>

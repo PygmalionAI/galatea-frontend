@@ -80,6 +80,7 @@ const BetaNavBar = () => {
             <a href="https://github.com/PygmalionAI" target="_blank" rel="noopener noreferrer">GitHub</a>
           </li>
           <li>
+            <a><Link to="/account">Account</Link></a>
           </li>
           <li>
             <a onClick={logOut} className="cursor-pointer">Log Out</a>
