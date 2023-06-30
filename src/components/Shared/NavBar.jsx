@@ -21,15 +21,15 @@ const NavBar = () => {
         className="focusable-icon-button rounded p-1"
         href="/account"
       >
-        <User style={location.pathname === "/account" ? { className: 'focusable-icon-button.active' } : {}}/>
+        <User style={location.pathname === "/account" ? { color: 'white' } : {}}/>
     </a>
 
       <a
         aria-label="Character Settings"
         className="focusable-icon-button rounded p-1"
-        href="/character"
+        href="/characters"
       >
-        <Users style={location.pathname === "/character" ? { className: 'focusable-icon-button.active' } : {}}/>
+        <Users style={location.pathname === "/characters" ? { color: 'white' } : {}}/>
   </a>
 
       <a
@@ -37,7 +37,7 @@ const NavBar = () => {
         className="focusable-icon-button rounded p-1"
         href="/chat"
       >
-        <MessageCircle className={location.pathname === "/account" ? 'focusable-icon-button active' : ''} />
+        <MessageCircle className={location.pathname === "/chat" ? { color: 'white' } : {}} />
 
 </a>
 
@@ -46,7 +46,7 @@ const NavBar = () => {
         className="focusable-icon-button rounded p-1"
         href="/generation-settings"
       >
-        <Settings style={location.pathname === "/generation-settings" ? { className: 'focusable-icon-button.active' } : {}}/>
+        <Settings style={location.pathname === "/generation-settings" ? { color: 'white' } : {}}/>
 </a>
 
 <a

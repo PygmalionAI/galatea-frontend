@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { styles } from '../../styles';
 import { pygchiselsvg, menu, close } from '../../assets';
 
-const NavBar = () => {
+const LandingNavBar = () => {
   const [active, setActive] = useState('');
   const [toggle, setToggle] = useState(false);
 
@@ -63,4 +63,4 @@ const NavBar = () => {
   );
 };
 
-export default NavBar;
+export default LandingNavBar;

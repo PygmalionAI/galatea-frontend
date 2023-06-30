@@ -1,4 +1,4 @@
 import Info from "./Info";
-import NavBar from "./NavBar";
+import LandingNavBar from "./LandingNavBar";
 
-export { NavBar, Info };
+export { LandingNavBar, Info };
