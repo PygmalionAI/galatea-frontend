@@ -37,7 +37,7 @@ const NavBar = () => {
         className="focusable-icon-button rounded p-1"
         href="/chat"
       >
-        <MessageCircle className={location.pathname === "/chat" ? 'focusable-icon-button active' : ''} />
+        <MessageCircle className={location.pathname === "/chat" ? { color: 'white' } : {}} />
 
 </a>
 
