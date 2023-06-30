@@ -1,43 +1,51 @@
 import React, { useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Eye, EyeOff } from 'lucide-react'
-import { TextInput, Button } from '../Shared';
+import { TextInput, Button, Alert } from '../Shared';
 import firebase from '../../firebaseConfig';
+import 'firebase/compat/firestore'
 
 const RegisterForm = (props) => {
   const [isPasswordVisible, setPasswordVisible] = useState(false);
   const [isConfirmPasswordVisible, setConfirmPasswordVisible] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
   const navigateTo = useNavigate();
+  const submitButtonRef = useRef();
 
   const handleSubmit = async (evt) => {
     evt.preventDefault();
     try {
-      // Get the values entered by the user
       const username = evt.target.username.value;
       const email = evt.target.email.value;
       const password = evt.target.password.value;
+      const confirmPassword = evt.target.confirmpassword.value;
 
-      // Call the Firebase authentication method to create a new user
+      if (password !== confirmPassword) {
+        setErrorMessage("Passwords do not match.");
+        return;
+      }
+
+      // Check if a user with the given username already exists
+      const usernameQuerySnapshot = await firebase.firestore().collection('users').where('username', '==', username).get();
+      if (!usernameQuerySnapshot.empty) {
+        setErrorMessage("A user with that username already exists.");
+        return;
+      }
+
       const userCredential = await firebase.auth().createUserWithEmailAndPassword(email, password);
       const user = userCredential.user;
 
-      // Update the user's display name with the username
       await user.updateProfile({
         displayName: username
       });
 
       navigateTo("/login");
-
-      // You can add further logic or redirect to a different page upon successful sign-up
-      console.log('User account created successfully!');
     } catch (error) {
       console.error('Error creating user account:', error);
-      // Handle any errors or display error messages to the user
+      setErrorMessage(error.message);
     }
   };
-
-  const submitButtonRef = useRef();
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-6">
@@ -87,6 +95,11 @@ const RegisterForm = (props) => {
         <Button type="submit">
           Sign Up
         </Button>
+        {errorMessage && (
+          <Alert schema="error" title="Registration Failed">
+            {errorMessage}
+          </Alert>
+        )}
       </div>
     </form>
   );
