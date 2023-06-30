@@ -1,51 +1,66 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Eye, EyeOff } from 'lucide-react'
 import { TextInput, Button, Alert } from '../Shared';
 import firebase from '../../firebaseConfig';
-import 'firebase/compat/firestore'
+import { collection, getDocs, query, where } from 'firebase/firestore';
+import { doc, getDoc } from 'firebase/firestore';
+import { getAuth, createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
+import { getFirestore } from 'firebase/firestore';
 
 const RegisterForm = (props) => {
   const [isPasswordVisible, setPasswordVisible] = useState(false);
   const [isConfirmPasswordVisible, setConfirmPasswordVisible] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
+  const [signedUp, setSignedUp] = useState(false);
+  const auth = getAuth();
 
   const navigateTo = useNavigate();
   const submitButtonRef = useRef();
 
-  const handleSubmit = async (evt) => {
-    evt.preventDefault();
-    try {
-      const username = evt.target.username.value;
-      const email = evt.target.email.value;
-      const password = evt.target.password.value;
-      const confirmPassword = evt.target.confirmpassword.value;
+  useEffect(() => {
+    if (signedUp) {
+      navigateTo('/login');
+    }
+  })
 
-      if (password !== confirmPassword) {
+  const handleSubmit = async (evt) => {
+      evt.preventDefault();
+      const username = evt.target.username.value;
+      const email = evt.target.email.value
+      const password = evt.target.password.value;
+      const conpass = evt.target.confirmpassword.value;
+
+      if (password !== conpass) {
         setErrorMessage("Passwords do not match.");
         return;
       }
 
-      // Check if a user with the given username already exists
-      const usernameQuerySnapshot = await firebase.firestore().collection('users').where('username', '==', username).get();
-      if (!usernameQuerySnapshot.empty) {
-        setErrorMessage("A user with that username already exists.");
-        return;
-      }
+      createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        updateProfile(user, {
+          displayName: username
+        }).catch((error) => {
+          setErrorMessage(error.message)
+        })
+        setSuccessMessage("Your profile has been created.")
 
-      const userCredential = await firebase.auth().createUserWithEmailAndPassword(email, password);
-      const user = userCredential.user;
-
-      await user.updateProfile({
-        displayName: username
+        setTimeout(() => {
+          setSignedUp(true);
+        }, 2000) // wait two seconds before redirecting to /login
+      })
+      .catch((error) => {
+        if (error.message === "Firebase: Password should be at least 6 characters (auth/weak-password).") {
+          setErrorMessage("Password should be at least 6 characters.")
+        } else if (error.message === "Firebase: Error (auth/email-already-in-use).") {
+          setErrorMessage("That email is already in use by another user.")
+        } else {
+          setErrorMessage(error.message)
+        }
       });
-
-      navigateTo("/login");
-    } catch (error) {
-      console.error('Error creating user account:', error);
-      setErrorMessage(error.message);
     }
-  };
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-6">
@@ -98,6 +113,11 @@ const RegisterForm = (props) => {
         {errorMessage && (
           <Alert schema="error" title="Registration Failed">
             {errorMessage}
+          </Alert>
+        )}
+        {successMessage && (
+          <Alert schema="success" title="Registration Successful">
+            {successMessage}
           </Alert>
         )}
       </div>
