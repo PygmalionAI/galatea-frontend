@@ -51,7 +51,10 @@ const NavBar = () => {
             <a href="https://github.com/PygmalionAI" target="_blank" rel="noopener noreferrer">GitHub</a>
           </li>
           <li>
-            <a>Login/Register</a>
+            <a><Link to="/login">Login</Link></a>
+          </li>
+          <li>
+            <a><Link to="/register">Register</Link></a>
           </li>
           </ul>
         </div>

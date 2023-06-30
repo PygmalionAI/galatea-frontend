@@ -32,7 +32,7 @@ const BetaNavBar = () => {
       </div>
       <div className="hidden md:flex">
         <button className="text-white h-10 px-5 pink-gradient-background rounded-full mr-3 scale-10">Account</button>
-        <button className="text-white">Log Out</button>
+        <button className="text-white"><Link to="/">Log Out</Link></button>
       </div>
       <div className="md:hidden flex flex-1 justify-end items-center">
         <img src={toggle ? close : menu} alt="menu" className='w-[28px] h-[28px] object-contain cursor-pointer' onClick={() => setToggle(!toggle)}/>
@@ -54,7 +54,7 @@ const BetaNavBar = () => {
             <a>Account</a>
           </li>
           <li>
-            <a>Log out</a>
+            <a><Link to="/">Log out</Link></a>
           </li>
           </ul>
         </div>
