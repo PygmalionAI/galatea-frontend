@@ -19,7 +19,15 @@ const LoginForm = (props) => {
 
       navigateTo('/beta');
     } catch (error) {
-      setLoginError("Invalid email and/or password.")
+      if (error.message === "Firebase: There is no user record corresponding to this identifier. The user may have been deleted. (auth/user-not-found).") {
+        setLoginError("There is not a user with that email.")
+      } else if (error.message === "Firebase: Error (auth/wrong-password).") {
+        setLoginError("Invalid password.")
+      } else if (error.message === "Firebase: Error (auth/user-not-found).") {
+        setLoginError("There is not a user with those credentials.")
+      } else {
+        setLoginError(error.message)
+      }
     }
   };
 
