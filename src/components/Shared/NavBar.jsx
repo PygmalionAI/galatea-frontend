@@ -27,9 +27,9 @@ const NavBar = () => {
       <a
         aria-label="Character Settings"
         className="focusable-icon-button rounded p-1"
-        href="/character"
+        href="/characters"
       >
-        <Users style={location.pathname === "/character" ? { color: 'white' } : {}}/>
+        <Users style={location.pathname === "/characters" ? { color: 'white' } : {}}/>
   </a>
 
       <a
