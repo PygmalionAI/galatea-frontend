@@ -1,18 +1,37 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 // import { styles } from '../../styles';
 import { TextInput, Button } from '../Shared';
 import { Eye, EyeOff } from 'lucide-react'
+import firebase from '../../firebaseConfig';
 
 const LoginForm = (props) => {
  // const [isLoading, setIsLoading] = useState('');
   const [isPasswordVisible, setPasswordVisible] = useState(false);
 
-  const handleSubmit = (evt) => {
+  const navigateTo = useNavigate();
+
+  const handleSubmit = async (evt) => {
     evt.preventDefault();
+    try {
+      // Get the values entered by the user
+      const email = evt.target.email.value;
+      const password = evt.target.password.value;
+      
+      // Call the Firebase authentication method to authenticate the user
+      await firebase.auth().signInWithEmailAndPassword(email, password);
+      
+      // Redirect to the desired page after successful login
+      navigateTo('/beta');
+    } catch (error) {
+      console.error('Error logging in:', error);
+      // Handle any errors or display error messages to the user
+    }
   };
+  
 
   return (
-    <form onSubmit={(evt) => props.onSubmit(evt)} className="flex flex-col gap-6">
+    <form onSubmit={handleSubmit} className="flex flex-col gap-6">
       <div className="flex flex-col gap-2">
         <TextInput fieldName="email" placeholder="Email" type="email" required />
         <div className="relative">
@@ -32,7 +51,6 @@ const LoginForm = (props) => {
       </button>
       </div>
       </div>
-
       <Button type="submit" disabled={props.isLoading} primary>
       {props.isLoading ? "Logging in..." : "Log in"}
       </Button>

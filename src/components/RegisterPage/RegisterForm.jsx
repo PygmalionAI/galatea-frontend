@@ -1,21 +1,41 @@
 import React, { useState, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 // import { styles } from '../../styles';
 import { Eye, EyeOff } from 'lucide-react'
 import { TextInput, Button } from '../Shared';
+import firebase from '../../firebaseConfig';
 
 const RegisterForm = (props) => {
   // const [isLoading, setIsLoading] = useState('');
   const [isPasswordVisible, setPasswordVisible] = useState(false);
   const [isConfirmPasswordVisible, setConfirmPasswordVisible] = useState(false);
 
-  const handleSubmit = (evt) => {
+  const navigateTo = useNavigate();
+
+  const handleSubmit = async (evt) => {
     evt.preventDefault();
+    try {
+      // Get the values entered by the user
+      const email = evt.target.email.value;
+      const password = evt.target.password.value;
+      
+      // Call the Firebase authentication method to create a new user
+      await firebase.auth().createUserWithEmailAndPassword(email, password);
+
+      navigateTo("/login");
+      
+      // You can add further logic or redirect to a different page upon successful sign-up
+      console.log('User account created successfully!');
+    } catch (error) {
+      console.error('Error creating user account:', error);
+      // Handle any errors or display error messages to the user
+    }
   };
 
   const submitButtonRef = useRef();
 
   return (
-    <form onSubmit={(evt) => props.onSubmit(evt)} className="flex flex-col gap-6">
+    <form onSubmit={handleSubmit} className="flex flex-col gap-6">
       <div className="flex flex-col gap-2">
         <TextInput fieldName="username" placeholder="Username" type="text" required />
         <TextInput fieldName="email" placeholder="Email" type="email" required />

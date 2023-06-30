@@ -3,10 +3,23 @@ import { Link } from 'react-router-dom';
 
 import { styles } from '../../styles';
 import { pygchiselsvg, menu, close } from '../../assets';
+import firebase from '../../firebaseConfig';
 
 const BetaNavBar = () => {
   const [active, setActive] = useState('');
   const [toggle, setToggle] = useState(false);
+
+  const handleSignOut = async () => {
+    try {
+      // Call the Firebase sign-out method
+      await firebase.auth().signOut();
+      // Redirect the user to the desired page (e.g., home page)
+      history.push('/');
+    } catch (error) {
+      console.error('Error signing out:', error);
+      // Handle any errors or display error messages to the user
+    }
+  };
 
   return (
     <nav className={`${styles.paddingX} w-full flex items-center justify-between py-5 fixed top-0 z-20`}>
@@ -54,7 +67,7 @@ const BetaNavBar = () => {
             <a>Account</a>
           </li>
           <li>
-            <a><Link to="/">Log out</Link></a>
+            <a onClick={handleSignOut}><Link to="/">Log out</Link></a>
           </li>
           </ul>
         </div>
