@@ -44,7 +44,7 @@ const BetaNavBar = () => {
         </ul>
       </div>
       <div className="hidden md:flex">
-        <button className="text-white h-10 px-5 pink-gradient-background rounded-full mr-3 scale-10">Account</button>
+        <button className="text-white h-10 px-5 pink-gradient-background rounded-full mr-3 scale-10"><Link to='/account'>Account</Link></button>
         <button className="text-white"><Link to="/">Log Out</Link></button>
       </div>
       <div className="md:hidden flex flex-1 justify-end items-center">
@@ -64,7 +64,6 @@ const BetaNavBar = () => {
             <a href="https://github.com/PygmalionAI" target="_blank" rel="noopener noreferrer">GitHub</a>
           </li>
           <li>
-            <a>Account</a>
           </li>
           <li>
             <a onClick={handleSignOut}><Link to="/">Log out</Link></a>
