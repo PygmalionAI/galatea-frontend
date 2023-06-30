@@ -1,24 +1,40 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-
+import { Link, useNavigate } from 'react-router-dom';
 import { styles } from '../../styles';
 import { pygchiselsvg, menu, close } from '../../assets';
 import firebase from '../../firebaseConfig';
+import { getAuth, signOut, onAuthStateChanged } from 'firebase/auth';
+import { PointerLockControls } from '@react-three/drei';
 
 const BetaNavBar = () => {
   const [active, setActive] = useState('');
   const [toggle, setToggle] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(Boolean);
+  const auth = getAuth();
+  const navigateTo = useNavigate();
+  const user = auth.currentUser;
 
-  const handleSignOut = async () => {
-    try {
-      // Call the Firebase sign-out method
-      await firebase.auth().signOut();
-      // Redirect the user to the desired page (e.g., home page)
-      history.push('/');
-    } catch (error) {
-      console.error('Error signing out:', error);
-      // Handle any errors or display error messages to the user
-    }
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setLoggedIn(true);
+      } else {
+        setLoggedIn(false);
+        navigateTo('/login');
+      }
+    });
+
+    return () => unsubscribe(); // Cleanup the listener when the component unmounts
+  }, [auth, navigateTo]);
+
+  const logOut = () => {
+    signOut(auth)
+      .then(() => {
+        setLoggedIn(false);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (
@@ -45,7 +61,7 @@ const BetaNavBar = () => {
       </div>
       <div className="hidden md:flex">
         <button className="text-white h-10 px-5 pink-gradient-background rounded-full mr-3 scale-10">Account</button>
-        <button className="text-white"><Link to="/">Log Out</Link></button>
+        <button onClick={logOut} className="text-white">Log Out</button>
       </div>
       <div className="md:hidden flex flex-1 justify-end items-center">
         <img src={toggle ? close : menu} alt="menu" className='w-[28px] h-[28px] object-contain cursor-pointer' onClick={() => setToggle(!toggle)}/>
@@ -67,7 +83,7 @@ const BetaNavBar = () => {
             <a>Account</a>
           </li>
           <li>
-            <a onClick={handleSignOut}><Link to="/">Log out</Link></a>
+            <a onClick={logOut} className="cursor-pointer">Log Out</a>
           </li>
           </ul>
         </div>
