@@ -1,8 +1,13 @@
 import { motion } from 'framer-motion';
-
 import { styles } from '../../styles';
+import firebase from '../../firebaseConfig';
+import { getAuth } from 'firebase/auth';
 
 const BetaInfo = () => {
+  const auth = getAuth();
+  const user = auth.currentUser;
+  const username = user.displayName;
+
   return (
     <section className="relative w-full h-screen mx-auto">
       <div className={`${styles.paddingX} absolute inset-0 top-[25%] max-w-7xl mx-auto flex flex-row items-start gap-5`}>
@@ -12,7 +17,7 @@ const BetaInfo = () => {
         </div>
 
         <div>
-          <h1 className={`${styles.heroHeadText} text-white`}>You're all set!</h1>
+          <h1 className={`${styles.heroHeadText} text-white`}>Welcome, {username}</h1>
           <p className={`${styles.heroSubText} mt-2 text-white-100`}>Your account has been created successfully. <br className="sm:block hidden"/> To participate in our closed beta program, <br className="sm:block hidden"/> please join the PygmalionAI <span className="text-[#1A78D6]"><a href="https://discord.gg/pygmalionai" target="_blank" className="underline-animation lightblue">Discord.</a></span> <br className="sm:block hidden"/> <br className="sm:block hidden"/>Thank you!</p>
         </div>
       </div>
