@@ -7,6 +7,8 @@ import { collection, getDocs, query, where } from 'firebase/firestore';
 import { doc, getDoc } from 'firebase/firestore';
 import { getAuth, createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore';
+import db from '../../firestoreConfig.js'
+const userRef = db.collection('users')
 
 const RegisterForm = (props) => {
   const [isPasswordVisible, setPasswordVisible] = useState(false);
@@ -36,6 +38,12 @@ const RegisterForm = (props) => {
         setErrorMessage("Passwords do not match.");
         return;
       }
+      const usernameCheck = await userRef.where('username', '==', {username}).get()
+      if (!usernameCheck.empty) {
+        setErrorMessage("This username is already taken.");
+        return;
+      }
+
 
       createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
