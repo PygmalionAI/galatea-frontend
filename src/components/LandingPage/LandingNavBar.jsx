@@ -51,10 +51,10 @@ const LandingNavBar = () => {
             <a href="https://github.com/PygmalionAI" target="_blank" rel="noopener noreferrer">GitHub</a>
           </li>
           <li>
-            <a><Link to="/login">Login</Link></a>
+            <a href="/login">Login</a>
           </li>
           <li>
-            <a><Link to="/register">Register</Link></a>
+            <a href="/register">Register</a>
           </li>
           </ul>
         </div>
