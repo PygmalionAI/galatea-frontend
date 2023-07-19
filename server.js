@@ -8,7 +8,7 @@ import { collection, getDocs, query, where } from 'firebase/firestore';
 import { dirname } from 'path';
 import { doc, getDoc } from 'firebase/firestore';
 import { fileURLToPath, pathToFileURL } from 'url';
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore';
 import { env } from 'process';
 
@@ -104,7 +104,6 @@ app.post('/auth/login', (req, res) => {
 });
 
 // Check if the user is authenticated
-// Check if the user is authenticated
 app.get('/auth/status', (req, res) => {
   const auth = getAuth();
   const user = auth.currentUser;
@@ -113,4 +112,16 @@ app.get('/auth/status', (req, res) => {
   } else {
     res.send(false); // User is not authenticated
   }
+});
+
+// Log the user out
+app.get('/auth/logout', (req, res) => {
+  const auth = getAuth();
+  signOut(auth)
+  .then(() => {
+    res.status(200).json({ message: 'User logged out successfully' });
+  })
+  .catch((error) => {
+    res.status(500).json({ message: 'Error logging out user', error });
+  });
 });

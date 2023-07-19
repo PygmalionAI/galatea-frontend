@@ -3,7 +3,7 @@ import { PointerLockControls } from '@react-three/drei';
 import { pygchiselsvg, menu, close } from '../../assets';
 import React, { useEffect, useState } from 'react';
 import { styles } from '../../styles';
-import { checkAuth } from '../../apis/api';
+import { checkAuth, signOut } from '../../apis/api';
 
 const BetaNavBar = () => {
   const [active, setActive] = useState('');
@@ -25,9 +25,17 @@ const BetaNavBar = () => {
       });
   }, []);  
 
+  // Sign the user out when button is clicked
   const logOut = () => {
-    return;
-  }
+    signOut()
+      .then((res) => {
+        setLoggedIn(false);
+        navigateTo('/login');
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   return (
     <nav className={`${styles.paddingX} w-full flex items-center justify-between py-5 fixed top-0 z-20`}>

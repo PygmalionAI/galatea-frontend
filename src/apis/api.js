@@ -29,6 +29,7 @@ export async function logIn(email, password) {
     return response.data;
   } catch (error) {
     console.error(`Error logging in: ${error}`);
+    throw error;
   }
 };
 
@@ -36,9 +37,20 @@ export async function logIn(email, password) {
 export async function checkAuth() {
   try {
     const response = await axios.get(`${jsAPI}/auth/status`);
-    console.log(response.data);
     return response.data;
   } catch (error) {
     console.error(`Error checking auth: ${error}`);
+    throw error;
+  }
+}
+
+// Log the user out
+export async function signOut() {
+  try {
+    const response = await axios.get(`${jsAPI}/auth/logout`);
+    return response.data;
+  } catch (error) {
+    console.error(`Error logging out: ${error}`);
+    throw error;
   }
 }
