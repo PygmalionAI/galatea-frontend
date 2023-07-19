@@ -1,14 +1,10 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { Eye, EyeOff } from 'lucide-react'
+import firebase from '../../firebaseConfig';
+import { getAuth } from 'firebase/auth';
+import React, { useState, useRef, useEffect } from 'react';
 import { TextInput, Button, Alert } from '../Shared';
-// import firebase from '../../firebaseConfig';
-// import { collection, getDocs, query, where } from 'firebase/firestore';
-// import { doc, getDoc } from 'firebase/firestore';
-// import { getAuth, createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
-//import { getFirestore } from 'firebase/firestore';
-// import db from '../../firestoreConfig.js'
-// const userRef = db.collection('users')
+import { useNavigate } from 'react-router-dom';
+import { signUp } from '../../apis/api';
 
 const RegisterForm = (props) => {
   const [isPasswordVisible, setPasswordVisible] = useState(false);
@@ -38,38 +34,18 @@ const RegisterForm = (props) => {
         setErrorMessage("Passwords do not match.");
         return;
       }
-      /*
-      const usernameCheck = await userRef.where('username', '==', {username}).get()
-      if (!usernameCheck.empty) {
-        setErrorMessage("This username is already taken.");
-        return;
-      }*/
 
-
-      createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        const user = userCredential.user;
-        updateProfile(user, {
-          displayName: username
-        }).catch((error) => {
-          setErrorMessage(error.message)
-        })
-        setSuccessMessage("Your profile has been created.")
-
-        setTimeout(() => {
-          setSignedUp(true);
-        }, 2000) // wait two seconds before redirecting to /login
-      })
-      .catch((error) => {
-        if (error.message === "Firebase: Password should be at least 6 characters (auth/weak-password).") {
-          setErrorMessage("Password should be at least 6 characters.")
-        } else if (error.message === "Firebase: Error (auth/email-already-in-use).") {
-          setErrorMessage("That email is already in use by another user.")
-        } else {
-          setErrorMessage(error.message)
-        }
-      });
-    }
+      try {
+        // Call the signUp function and pass the required information
+        const response = await signUp(email, username, password);
+        setSuccessMessage("Registration successful. You can now log in.");
+        setSignedUp(true);
+      } catch (error) {
+        // Handle any errors that might occur during the sign-up process
+        console.log(`There was an error whie signing up: ${error}`)
+        setErrorMessage("Registration failed. Please try again.");
+      }
+  }
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-6">
