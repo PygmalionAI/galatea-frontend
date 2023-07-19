@@ -2,7 +2,6 @@
 
 branch="dev"
 
-cd /path/to/your/repo
 git pull origin "$branch"
 
 if [[ -n $(git status -s) ]]; then
