@@ -8,7 +8,7 @@ import { collection, getDocs, query, where } from 'firebase/firestore';
 import { dirname } from 'path';
 import { doc, getDoc } from 'firebase/firestore';
 import { fileURLToPath, pathToFileURL } from 'url';
-import { getAuth, createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore';
 import { env } from 'process';
 
@@ -62,19 +62,55 @@ process.on('SIGTERM', () => {
 });
 
 // App Functions
-
-const auth = getAuth();
+let signedIn;
 
 // Auth Functions
+// Sign the user up
 app.post('/auth/signup', (req, res) => {
+  const auth = getAuth();
   const { email, password, username } = req.body;
 
   createUserWithEmailAndPassword(auth, email, password)
   .then((userCredential) => {
     const user = userCredential.user;
+    signedIn = true;
     res.status(200).json({ message: 'User signed up successfully', user });
   })
   .catch((error) => {
+    signedIn = false;
     res.status(500).json({ message: 'Error signing up user', error });
   });
+});
+
+// Log the user in
+app.post('/auth/login', (req, res) => {
+  const { email, password } = req.body;
+  const auth = getAuth();
+  signInWithEmailAndPassword(auth, email, password)
+  .then((userCredential) => {
+    const user = userCredential.user;
+    if (user) {
+      signedIn = true;
+      res.status(200).json({ message: 'User logged in successfully', user });
+    } else {
+      signedIn = false;
+      res.status(500).json({ message: 'Error logging in user', error });
+    }
+  })
+  .catch((error) => {
+    signedIn = false;
+    res.status(500).json({ message: 'Error logging in user', error });
+  });
+});
+
+// Check if the user is authenticated
+// Check if the user is authenticated
+app.get('/auth/status', (req, res) => {
+  const auth = getAuth();
+  const user = auth.currentUser;
+  if (user) {
+    res.send(true); // User is authenticated
+  } else {
+    res.send(false); // User is not authenticated
+  }
 });

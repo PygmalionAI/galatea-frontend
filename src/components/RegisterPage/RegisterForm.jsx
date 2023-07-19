@@ -37,7 +37,7 @@ const RegisterForm = (props) => {
 
       try {
         // Call the signUp function and pass the required information
-        const response = await signUp(email, username, password);
+        await signUp(email, username, password);
         setSuccessMessage("Registration successful. You can now log in.");
         setSignedUp(true);
       } catch (error) {
