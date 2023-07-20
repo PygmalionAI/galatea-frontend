@@ -20,7 +20,12 @@ const PrivacyPolicy = () => {
       </div>
 
       <div className="mx-auto flex max-w-5xl flex-col gap-12 px-4">
-        <h2 className="text-3xl font-bold">Privacy Policy for PygmalionAI</h2>
+        <h2 className="text-3xl font-bold">
+          Privacy Policy for{" "}
+          <span className="whitespace-nowrap">
+            Pygmalion<span className="text-purple-400">AI</span>
+          </span>
+        </h2>
 
         <div className="flex flex-col gap-4">
           <h3 className="text-lg font-bold italic">
@@ -82,7 +87,7 @@ const PrivacyPolicy = () => {
             the use of PygmalionAI, please contact us at [Insert Contact Email].
           </p>
 
-          <p>
+          <p className="text-purple-200">
             By using PygmalionAI, you agree to the terms outlined in this
             Privacy Policy. If you do not agree with this policy, please refrain
             from using the platform.
