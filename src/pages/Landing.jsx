@@ -1,11 +1,11 @@
 import { Info, LandingNavBar } from "../components";
-import Stars from "../components/Shared/Stars";
+import StarsBackground from "../components/Shared/StarsBackground";
 
 const Landing = () => {
   return (
     <div className="bg-primary">
       <div className="bg-primary bg-cover bg-center bg-no-repeat">
-        <Stars />
+        <StarsBackground />
         <LandingNavBar />
         <Info />
       </div>

@@ -1,11 +1,12 @@
 import { NotFound, NotFoundNavBar } from "../components";
+import StarsBackground from "../components/Shared/StarsBackground";
 
 const NotFoundPage = () => {
   return (
     <>
       <div className="relative z-0 bg-primary">
         <div className="relative bg-primary bg-cover bg-center bg-no-repeat">
-          <Stars />
+          <StarsBackground />
           <NotFoundNavBar />
           <NotFound />
         </div>

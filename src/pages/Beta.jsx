@@ -1,11 +1,11 @@
 import { BetaInfo, BetaNavBar } from "../components";
-import Stars from "../components/Shared/Stars";
+import StarsBackground from "../components/Shared/StarsBackground";
 
 const Beta = () => {
   return (
     <div className="relative z-0 bg-primary">
       <div className="relative bg-primary bg-cover bg-center bg-no-repeat">
-        <Stars />
+        <StarsBackground />
         <BetaNavBar />
         <BetaInfo />
       </div>

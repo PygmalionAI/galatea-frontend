@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-const Stars = () => {
+const StarsBackground = () => {
   useEffect(() => {
     const numStars = 10; // Number of shooting stars to generate
 
@@ -23,4 +23,4 @@ const Stars = () => {
   );
 };
 
-export default Stars;
+export default StarsBackground;
