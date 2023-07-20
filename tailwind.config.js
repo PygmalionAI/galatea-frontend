@@ -5,9 +5,12 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        background: "#090b10",
-        "background-lighter": "#0d1017",
-        purple: {
+        "ga-default": "#090b10",
+        "ga-lighter": "#0d1017",
+        "ga-text": "#fff",
+        "ga-black": "#090b10",
+        "ga-pink": "#9840a0",
+        "ga-purple": {
           50: "#c8aad4",
           100: "#c49acf",
           200: "#bf80c8",
@@ -19,12 +22,15 @@ module.exports = {
           800: "#60286e",
           900: "#401c4c",
         },
-        primary: "#050816",
-        secondary: "#030b1c",
-        tertiary: "#005282",
-        "black-100": "#100d25",
-        "black-200": "#090325",
-        "white-100": "#f3f3f3",
+        "ga-white": "#dfe3e6",
+        "ga-light-black": "#0d1017",
+        "ga-light-default": "#FDF4F5",
+        "ga-light-lighter": "#FDF4F5",
+        "ga-light-text": "#090b10",
+        "ga-light-pink": "#9840a0",
+      },
+      fontFamily: {
+        sans: ["Poppins"],
       },
       boxShadow: {
         card: "0px 35px 120px -15px #211e35",
