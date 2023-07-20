@@ -15,11 +15,11 @@ const Footer = () => {
       <div className="flex flex-col justify-between gap-8 md:flex-row">
         {/* logo and about */}
         <div className="flex flex-col gap-2">
-          <Link href="/" className="w-fit text-[var(--ga-text)]">
+          <Link to="/" className="w-fit text-[var(--ga-text)]">
             Pygmalion<span className="text-purple-400">AI</span>
           </Link>
           <p className="max-w-md text-sm font-light">
-            An Open-source project dedicated to creating large language models
+            An open-source project dedicated to creating large language models
             for chat and role-play purposes.
           </p>
         </div>
@@ -30,9 +30,9 @@ const Footer = () => {
           <ul className="flex flex-col gap-2">
             <li className="font-bold">Project</li>
             <Link className="underline-animation w-fit">
-              <li className="">About</li>
+              <li>About</li>
             </Link>
-            <Link className="underline-animation w-fit">
+            <Link to="/privacy" className="underline-animation w-fit">
               <li>Privacy Policy</li>
             </Link>
             <Link className="underline-animation w-fit">
