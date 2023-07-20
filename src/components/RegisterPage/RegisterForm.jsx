@@ -24,28 +24,28 @@ const RegisterForm = (props) => {
   })
 
   const handleSubmit = async (evt) => {
-      evt.preventDefault();
-      const username = evt.target.username.value;
-      const email = evt.target.email.value
-      const password = evt.target.password.value;
-      const conpass = evt.target.confirmpassword.value;
-
-      if (password !== conpass) {
-        setErrorMessage("Passwords do not match.");
-        return;
-      }
-
-      try {
-        // Call the signUp function and pass the required information
-        await signUp(email, username, password);
-        setSuccessMessage("Registration successful. You can now log in.");
-        setSignedUp(true);
-      } catch (error) {
-        // Handle any errors that might occur during the sign-up process
-        console.log(`There was an error whie signing up: ${error}`)
-        setErrorMessage("Registration failed. Please try again.");
-      }
-  }
+    evt.preventDefault();
+    const username = evt.target.username.value;
+    const email = evt.target.email.value;
+    const password = evt.target.password.value;
+    const conpass = evt.target.confirmpassword.value;
+  
+    if (password !== conpass) {
+      setErrorMessage("Passwords do not match.");
+      return;
+    }
+  
+    try {
+      // Call the signUp function and pass the required information
+      await signUp(email, username, password);
+      setSuccessMessage("Registration successful. You can now log in.");
+      setSignedUp(true);
+    } catch (error) {
+      // Handle any errors that might occur during the sign-up process
+      console.log(`There was an error while signing up: ${error}`);
+      setErrorMessage("Registration failed. Please make sure that your credentials are not already in use.");
+    }
+  };
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-6">

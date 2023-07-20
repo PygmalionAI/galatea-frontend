@@ -4,12 +4,10 @@ import express from 'express';
 import firebase from './src/firebaseConfig.js';
 
 import { createServer } from 'vite';
-import { collection, getDocs, query, where } from 'firebase/firestore';
 import { dirname } from 'path';
-import { doc, getDoc } from 'firebase/firestore';
 import { fileURLToPath, pathToFileURL } from 'url';
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from 'firebase/auth';
-import { getFirestore } from 'firebase/firestore';
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, sendEmailVerification } from 'firebase/auth';
+import { getFirestore, collection, doc, setDoc, getDocs } from 'firebase/firestore';
 import { env } from 'process';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -66,20 +64,30 @@ let signedIn;
 
 // Auth Functions
 // Sign the user up
-app.post('/auth/signup', (req, res) => {
+
+app.post('/auth/signup', async (req, res) => {
   const auth = getAuth();
   const { email, password, username } = req.body;
 
-  createUserWithEmailAndPassword(auth, email, password)
-  .then((userCredential) => {
+  try {
+    // Create the user in Firebase Authentication
+    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
     const user = userCredential.user;
+
+    // Store the username in Firestore
+    const db = getFirestore();
+    const usersCollectionRef = collection(db, 'users');
+    const userDocRef = doc(usersCollectionRef, user.uid);
+    
+    // Use setDoc to add a document with the user's UID and username
+    await setDoc(userDocRef, { username, email });
+
     signedIn = true;
     res.status(200).json({ message: 'User signed up successfully', user });
-  })
-  .catch((error) => {
+  } catch (error) {
     signedIn = false;
     res.status(500).json({ message: 'Error signing up user', error });
-  });
+  }
 });
 
 // Log the user in

@@ -34,7 +34,7 @@ const LoginForm = (props) => {
       const loginError = error.response.data.error;
       setSignedIn(false);
       console.log(`There was an error while logging in: ${error}`);
-      setErrorMessage(`${loginError}`);
+      setErrorMessage(`Please make sure your credentials are correct.`);
     }
   };
 
@@ -65,7 +65,7 @@ const LoginForm = (props) => {
       </Button>
       {errorMessage && (
         <Alert schema="error" title="Failed to Log In.">
-          {loginError}
+          {errorMessage}
         </Alert>
       )}
       {successMessage && (
