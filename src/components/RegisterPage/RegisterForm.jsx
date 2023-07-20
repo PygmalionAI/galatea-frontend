@@ -1,10 +1,13 @@
 import { Eye, EyeOff } from 'lucide-react'
-import firebase from '../../firebaseConfig';
-import { getAuth } from 'firebase/auth';
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { TextInput, Button, Alert } from '../Shared';
 import { useNavigate } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
+import { Popup } from 'reactjs-popup';
+import firebase from '../../firebaseConfig';
 import { signUp } from '../../apis/api';
+import { getAuth } from 'firebase/auth';
 
 const RegisterForm = (props) => {
   const [isPasswordVisible, setPasswordVisible] = useState(false);
@@ -12,10 +15,43 @@ const RegisterForm = (props) => {
   const [errorMessage, setErrorMessage] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
   const [signedUp, setSignedUp] = useState(false);
+  const [isRegistrationPending, setisRegistrationPending] = useState(false);
+  const [showPopup, setShowPopup] = useState(false);
+  const [hasPopupBeenOpened, setHasPopupBeenOpened] = useState(false);
   const auth = getAuth();
-
   const navigateTo = useNavigate();
-  const submitButtonRef = useRef();
+
+  const handleSubmit = async (evt) => {
+    evt.preventDefault();
+    setisRegistrationPending(true);
+    if (hasPopupBeenOpened || !showPopup) {
+      return; // Exit early if conditions aren't met
+    }
+    const id = toast.loading("Registration pending...", {
+      position: toast.POSITION.TOP_RIGHT
+    });
+    
+      const username = evt.target.username.value;
+      const email = evt.target.email.value;
+      const password = evt.target.password.value;
+      const conpass = evt.target.confirmpassword.value;
+      if (password !== conpass) {
+        setErrorMessage("Passwords do not match.");
+        return;
+      }
+      try {
+      // Call the signUp function and pass the required information
+      await signUp(email, username, password);
+      // Update success message after form data is handled successfully
+      toast.update(id, { render: "Registration successful", type: "success", isLoading: false });
+      setSignedUp(true);
+      setisRegistrationPending(false);
+     } catch (error) {
+       // Handle any errors that might occur during the sign-up process
+       console.log(`There was an error while signing up: ${error}`);
+       setErrorMessage("Registration failed. Please make sure that your credentials are not already in use.");
+     }
+  };
 
   useEffect(() => {
     if (signedUp) {
@@ -23,29 +59,10 @@ const RegisterForm = (props) => {
     }
   })
 
-  const handleSubmit = async (evt) => {
-    evt.preventDefault();
-    const username = evt.target.username.value;
-    const email = evt.target.email.value;
-    const password = evt.target.password.value;
-    const conpass = evt.target.confirmpassword.value;
-  
-    if (password !== conpass) {
-      setErrorMessage("Passwords do not match.");
-      return;
+    const handlePopupClose = () => {
+      setShowPopup(false);
+      setHasPopupBeenOpened(true);
     }
-  
-    try {
-      // Call the signUp function and pass the required information
-      await signUp(email, username, password);
-      setSuccessMessage("Registration successful. You can now log in.");
-      setSignedUp(true);
-    } catch (error) {
-      // Handle any errors that might occur during the sign-up process
-      console.log(`There was an error while signing up: ${error}`);
-      setErrorMessage("Registration failed. Please make sure that your credentials are not already in use.");
-    }
-  };
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-6">
@@ -92,10 +109,18 @@ const RegisterForm = (props) => {
             {isConfirmPasswordVisible ? <Eye /> : <EyeOff />}
           </button>
         </div>
-        <Button type="submit">
-          Sign Up
-        </Button>
-        {errorMessage && (
+        <Popup onOpen={() => setShowPopup(true)} position="center" trigger={
+        <div>
+          <Button type="submit">
+            Sign Up
+          </Button>
+        </div>
+      }>
+        <div>Please click accept below.</div>
+        <button className="close" onClick={(e) => {handlePopupClose(e)}}>I Accept</button>
+      </Popup>
+
+        {/* {errorMessage && (
           <Alert schema="error" title="Registration Failed">
             {errorMessage}
           </Alert>
@@ -104,7 +129,7 @@ const RegisterForm = (props) => {
           <Alert schema="success" title="Registration Successful">
             {successMessage}
           </Alert>
-        )}
+        )} */}
       </div>
     </form>
   );
