@@ -87,7 +87,7 @@
     @apply _focusable-base;
     @apply max-h-96 max-w-[10rem];
     @apply rounded-md shadow-md;
-    @apply bg-background-lighter hover:bg-zinc-900 active:bg-zinc-800;
+    @apply bg-ga-background-lighter hover:bg-zinc-900 active:bg-zinc-800;
   }
 }
 

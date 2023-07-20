@@ -6,12 +6,12 @@ const Header = (props) => (
   <>
     <div className="mt-8 flex flex-col gap-3">
       <div className="w-fit rounded-full bg-white/10 p-3">
-        <MessageCircle className="text-[var(--ga-text)]/75" size={32} />
+        <MessageCircle className="text-ga-text/75" size={32} />
       </div>
-      <h1 className="text-4xl font-bold text-[var(--ga-text)]">
+      <h1 className="text-4xl font-bold text-ga-text">
         {props.participants.join(", ")}
       </h1>
-      <h2 className="text-lg text-[var(--ga-text)]/75">
+      <h2 className="text-lg text-ga-text/75">
         {
           props.participants.length === 1 ?
             <>This is the beginning of your conversation with {props.participants[0]}.</> :

@@ -7,9 +7,9 @@ const NavBar = () => {
   const location = useLocation();
 
   return (
-<span className="flex justify-between items-center gap-4 bg-[var(--ga-lighter)] px-8 py-3 shadow-xl max-sm:p-3">
+<span className="flex justify-between items-center gap-4 bg-ga-lighter px-8 py-3 shadow-xl max-sm:p-3">
   <span className="flex items-center gap-2 font-semibold">
-    <a href="/" className='text-[var(--ga-text)]'>
+    <a href="/" className='text-ga-text'>
       Pygmalion<span className="text-purple-400">AI</span>
     </a>
     <Toggle/>

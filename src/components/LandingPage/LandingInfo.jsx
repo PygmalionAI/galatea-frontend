@@ -12,8 +12,8 @@ const Info = () => {
         </div>
 
         <div>
-          <h1 className={`${styles.heroHeadText} text-white`}>Pygmalion<span className="text-[#1A78D6]">AI</span></h1>
-          <p className={`${styles.heroSubText} mt-2 text-white-100`}>PygmalionAI is an open-source project<br className="sm:block hidden"/> dedicated to creating large language models<br className="sm:block hidden"/> for chat and role-play purposes.<br className="sm:block hidden"/> <br className="sm:block hidden"/>Coming soon!</p>
+          <h1 className={`${styles.heroHeadText} text-ga-white`}>Pygmalion<span className="text-[#1A78D6]">AI</span></h1>
+          <p className={`${styles.heroSubText} mt-2 text-ga-white-darker`}>PygmalionAI is an open-source project<br className="sm:block hidden"/> dedicated to creating large language models<br className="sm:block hidden"/> for chat and role-play purposes.<br className="sm:block hidden"/> <br className="sm:block hidden"/>Coming soon!</p>
         </div>
       </div>
 

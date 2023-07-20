@@ -11,8 +11,8 @@ const NotFound = () => {
           <div className="w-1 sm:h-80 h-40 violet-gradient"/>
         </div>
         <div>
-          <h1 className={`${styles.heroHeadText} text-white`}>404<span className="text-[#1A78D6]"></span></h1>
-          <p className={`${styles.heroSubText} mt-2 text-white-100`}>That page couldn't be found.<br className="sm:block hidden"/> Are you looking for something else?</p>
+          <h1 className={`${styles.heroHeadText} text-ga-white`}>404<span className="text-[#1A78D6]"></span></h1>
+          <p className={`${styles.heroSubText} mt-2 text-ga-white-darker`}>That page couldn't be found.<br className="sm:block hidden"/> Are you looking for something else?</p>
         </div>
       </div>
 

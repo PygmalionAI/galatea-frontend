@@ -5,8 +5,13 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        "ga-background-lighter": "#0d1017",
+        "ga-primary": "#050816",
+        "ga-secondary": "#030b1c",
         "ga-default": "#090b10",
         "ga-lighter": "#0d1017",
+        "ga-white-darker": "#cfd3d6",
+        "ga-white": "#f3f3f3",
         "ga-text": "#fff",
         "ga-black": "#090b10",
         "ga-pink": "#9840a0",
@@ -22,12 +27,6 @@ module.exports = {
           800: "#60286e",
           900: "#401c4c",
         },
-        "ga-white": "#dfe3e6",
-        "ga-light-black": "#0d1017",
-        "ga-light-default": "#FDF4F5",
-        "ga-light-lighter": "#FDF4F5",
-        "ga-light-text": "#090b10",
-        "ga-light-pink": "#9840a0",
       },
       fontFamily: {
         sans: ["Poppins"],

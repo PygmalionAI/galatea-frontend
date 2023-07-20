@@ -8,7 +8,7 @@ import NavBar from '../components/Shared/NavBar';
 const Chat = () => {
   return (
     <>
-    <div className="bg-[var(--ga-default)] flex h-screen flex-col">
+    <div className="bg-ga-default flex h-screen flex-col">
       <div>
         <NavBar />
       </div>
