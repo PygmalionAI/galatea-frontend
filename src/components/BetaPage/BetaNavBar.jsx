@@ -2,35 +2,41 @@ import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { close, menu, pygchiselsvg } from "../../assets";
+import { PointerLockControls } from '@react-three/drei';
+import { pygchiselsvg, menu, close } from '../../assets';
+import React, { useEffect, useState } from 'react';
+import { styles } from '../../styles';
+import { checkAuth, signOut } from '../../apis/api';
 
 const BetaNavBar = () => {
   const [active, setActive] = useState("");
   const [toggle, setToggle] = useState(false);
-  const [loggedIn, setLoggedIn] = useState(Boolean);
-  const auth = getAuth();
+  const [loggedIn, setLoggedIn] = useState(false);  
   const navigateTo = useNavigate();
-  const user = auth.currentUser;
 
+  // On page load, check if the user is signed in
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        setLoggedIn(true);
-      } else {
-        setLoggedIn(false);
-        navigateTo("/login");
-      }
-    });
-
-    return () => unsubscribe(); // Cleanup the listener when the component unmounts
-  }, [auth, navigateTo]);
-
-  const logOut = () => {
-    signOut(auth)
-      .then(() => {
-        setLoggedIn(false);
+    checkAuth()
+      .then((res) => {
+        setLoggedIn(res);
+        if (!res) {
+          navigateTo('/login'); // Navigate to login page if not authenticated
+        }
       })
-      .catch((error) => {
-        console.log(error);
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);  
+
+  // Sign the user out when button is clicked
+  const logOut = () => {
+    signOut()
+      .then((res) => {
+        setLoggedIn(false);
+        navigateTo('/login');
+      })
+      .catch((err) => {
+        console.log(err);
       });
   };
 

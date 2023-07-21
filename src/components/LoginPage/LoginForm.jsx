@@ -1,33 +1,40 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { TextInput, Button, Alert } from '../Shared';
 import { Eye, EyeOff } from 'lucide-react';
-import firebase from '../../firebaseConfig';
+import React, { useState, useEffect } from 'react';
+import { TextInput, Button, Alert } from '../Shared';
+import { useNavigate } from 'react-router-dom';
+import { logIn } from '../../apis/api';
 
 const LoginForm = (props) => {
   const [isPasswordVisible, setPasswordVisible] = useState(false);
-  const [loginError, setLoginError] = useState(null); // Add state for login error
+  const [errorMessage, setErrorMessage] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
+  const [signedIn, setSignedIn] = useState(false);
   const navigateTo = useNavigate();
+
+  // Check if the user is signed in 
+  useEffect(() => {
+    if (signedIn) {
+      setTimeout(() => {
+        navigateTo('/beta');
+      }, 3000);
+    }
+  }, [signedIn]);
 
   const handleSubmit = async (evt) => {
     evt.preventDefault();
+    const email = evt.target.email.value;
+    const password = evt.target.password.value;
+
     try {
-      const email = evt.target.email.value;
-      const password = evt.target.password.value;
-
-      await firebase.auth().signInWithEmailAndPassword(email, password);
-
-      navigateTo('/beta');
+      await logIn(email, password);
+      setSignedIn(true);
+      setSuccessMessage('You have been logged in successfully. You will be redirected shortly.');
     } catch (error) {
-      if (error.message === "Firebase: There is no user record corresponding to this identifier. The user may have been deleted. (auth/user-not-found).") {
-        setLoginError("There is not a user with that email.")
-      } else if (error.message === "Firebase: Error (auth/wrong-password).") {
-        setLoginError("Invalid password.")
-      } else if (error.message === "Firebase: Error (auth/user-not-found).") {
-        setLoginError("There is not a user with those credentials.")
-      } else {
-        setLoginError(error.message)
-      }
+      // Get error from api
+      const loginError = error.response.data.error;
+      setSignedIn(false);
+      console.log(`There was an error while logging in: ${error}`);
+      setErrorMessage(`Please make sure your credentials are correct.`);
     }
   };
 
@@ -56,11 +63,16 @@ const LoginForm = (props) => {
       <Button type="submit" primary>
         Log In
       </Button>
-      {loginError && (
+      {errorMessage && (
         <Alert schema="error" title="Failed to Log In.">
-          {loginError}
+          {errorMessage}
         </Alert>
       )}
+      {successMessage && (
+          <Alert schema="success" title="Logged In">
+            {successMessage}
+          </Alert>
+        )}
     </form>
   );
 };
