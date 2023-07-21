@@ -1,9 +1,7 @@
-import { getAuth } from "firebase/auth";
+import { motion } from 'framer-motion';
+import { styles } from '../../styles';
 
 const BetaInfo = () => {
-  const auth = getAuth();
-  const user = auth.currentUser;
-
   return (
     <section className="relative mx-auto h-screen w-full">
       <div
