@@ -1,14 +1,12 @@
-import axios from 'axios';
 import cors from 'cors';
 import express from 'express';
-import firebase from './src/firebaseConfig.js';
+import firebase from './firebaseConfig.js';
 
 import { createServer } from 'vite';
 import { dirname } from 'path';
 import { fileURLToPath, pathToFileURL } from 'url';
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, sendEmailVerification } from 'firebase/auth';
 import { getFirestore, collection, doc, setDoc, getDocs } from 'firebase/firestore';
-import { env } from 'process';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
