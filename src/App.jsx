@@ -9,6 +9,7 @@ import {
   NotFoundPage,
   Register,
 } from "./pages";
+import ContactUs from "./pages/ContactUs";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 
 const App = () => {
@@ -24,6 +25,7 @@ const App = () => {
         <Route path="/account" element={<Account />} />
         <Route path="/characters" element={<Characters />} />
         <Route path="/privacy" element={<PrivacyPolicy />} />
+        <Route path="/contactus" element={<ContactUs />} />
       </Routes>
     </Router>
   );
