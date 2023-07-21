@@ -1,6 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
 @tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 @layer base {
   /* style resets */
@@ -12,6 +14,10 @@
     font-family: inherit;
     scroll-behavior: smooth;
     color-scheme: dark;
+    outline: none;
+  }
+
+  *:focus {
     outline: none;
   }
 
@@ -28,14 +34,12 @@
     @apply bg-white/10;
   }
   ::-webkit-scrollbar-thumb {
-    @apply bg-purple-600;
+    @apply bg-ga-purple-darker;
   }
   ::-webkit-scrollbar-thumb:hover {
-    @apply bg-purple-500;
+    @apply bg-ga-purple-default;
   }
 }
-
-@tailwind components;
 
 @layer components {
   /* for firefox. */
@@ -74,8 +78,8 @@
 
   .btn-primary {
     @apply btn-base;
-    @apply bg-purple-600 enabled:hover:bg-purple-500 enabled:active:bg-purple-400;
-    @apply disabled:cursor-not-allowed disabled:bg-purple-900 disabled:text-white/25;
+    @apply bg-ga-purple-darker enabled:hover:bg-ga-purple-default enabled:active:bg-ga-purple-lighter;
+    @apply disabled:cursor-not-allowed disabled:bg-ga-purple-darkest disabled:text-white/25;
   }
 
   .btn-secondary {
@@ -91,11 +95,9 @@
   }
 }
 
-@tailwind utilities;
-
 @layer utilities {
   .landing-gradient {
-    @apply bg-gradient-to-r from-ga-secondary to-ga-primary;
+    @apply bg-gradient-to-r from-ga-black-darker to-ga-black-default;
   }
 
   .violet-gradient {
@@ -107,31 +109,31 @@
   }
 
   .px-custom {
-	@apply sm:px-16 px-6;
+    @apply px-6 sm:px-16;
   }
 
   .py-custom {
-	@apply sm:py-16 py-6;
+    @apply py-6 sm:py-16;
   }
 
   .p-custom {
-	@apply sm:py-16 py-6 sm:px-16 px-6;
+    @apply px-6 py-6 sm:px-16 sm:py-16;
   }
 
   .heroHeadText {
-	@apply font-black text-white lg:text-[80px] sm:text-[60px] xs:text-[50px] text-[40px] lg:leading-[98px] mt-2;
+    @apply mt-2 text-[40px] font-black text-white xs:text-[50px] sm:text-[60px] lg:text-[80px] lg:leading-[98px];
   }
 
   .heroSubText {
-	@apply text-[#dfd9ff] font-medium lg:text-[30px] sm:text-[26px] xs:text-[20px] text-[16px] lg:leading-[40px];
+    @apply text-[16px] font-medium text-[#dfd9ff] xs:text-[20px] sm:text-[26px] lg:text-[30px] lg:leading-[40px];
   }
 
   .sectionHeadText {
-	@apply text-white font-black md:text-[60px] sm:text-[50px] xs:text-[40px] text-[30px];
+    @apply text-[30px] font-black text-white xs:text-[40px] sm:text-[50px] md:text-[60px];
   }
 
   .sectionSubText {
-	@apply sm:text-[18px] text-[14px] text-ga-secondary uppercase tracking-wider;
+    @apply text-[14px] uppercase tracking-wider text-ga-black-darker sm:text-[18px];
   }
 
   /* For Animating Underlined Text */

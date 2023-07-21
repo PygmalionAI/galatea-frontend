@@ -5,33 +5,32 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        "ga-background-lighter": "#0d1017",
-        "ga-primary": "#050816",
-        "ga-secondary": "#030b1c",
-        "ga-default": "#090b10",
-        "ga-lighter": "#0d1017",
-        "ga-white-darker": "#cfd3d6",
-        "ga-white": "#f3f3f3",
-        "ga-text": "#fff",
-        "ga-black": "#090b10",
-
-		// used for gradients
-        "ga-pink": "#ec008c",
-      	"ga-orange": "#fc6767",
-		"ga-violet": "#d021a1",
-
-        "ga-purple": {
-          50: "#c8aad4",
-          100: "#c49acf",
-          200: "#bf80c8",
-          300: "#bb69c0",
-          400: "#b556b4",
-          500: "#aa4bae",
-          600: "#9840a0",
-          700: "#7f348b",
-          800: "#60286e",
-          900: "#401c4c",
+        "ga-black": {
+          darker: "#030b1c",
+          default: "#050816",
+          lighter: "#090b10",
+          lightest: "#0d1017",
         },
+        "ga-white": {
+          lighter: "#fff",
+          default: "#f3f3f3",
+          darker: "#cfd3d6",
+        },
+
+        // accent color
+        "ga-purple": {
+          lightest: "#c090cb",
+          lighter: "#b556b4",
+          default: "#aa4bae",
+          darker: "#9840a0",
+          darkest: "#401c4c",
+        },
+
+        // used for gradients
+        "ga-pink": "#ec008c",
+        "ga-orange": "#fc6767",
+        "ga-violet": "#d021a1",
+        "ga-blue": "#40a8df",
       },
       fontFamily: {
         sans: ["Poppins"],

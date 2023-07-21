@@ -10,7 +10,7 @@ const Info = () => {
         </div>
 
         <div>
-          <h1 className={`heroHeadText text-ga-white`}>
+          <h1 className={`heroHeadText text-ga-white-default`}>
             Pygmalion<span className="text-[#1A78D6]">AI</span>
           </h1>
           <p className={`heroSubText mt-2 text-ga-white-darker`}>

@@ -3,10 +3,10 @@ import Toggle from "./Toggle";
 
 const SimpleNavBar = () => {
   return (
-    <nav className="flex items-center justify-between gap-4 bg-ga-background-lighter px-8 py-3 shadow-xl max-sm:p-3">
+    <nav className="flex items-center justify-between gap-4 bg-ga-black-lightest px-8 py-3 shadow-xl max-sm:p-3">
       <div className="flex items-center gap-2 font-semibold">
         <a href="/" className="flex items-center">
-          Pygmalion<span className="text-purple-400">AI</span>
+          Pygmalion<span className="text-ga-purple-lighter">AI</span>
         </a>
         <Toggle />
       </div>
