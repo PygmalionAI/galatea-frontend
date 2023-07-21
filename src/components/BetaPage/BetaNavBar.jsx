@@ -44,7 +44,9 @@ const BetaNavBar = () => {
           alt="chisel"
           className="h-9 w-9 object-contain"
         />
-        <p className="text-[18px] font-bold text-white">PygmalionAI</p>
+        <p className="text-[18px] font-bold text-ga-white-default">
+          PygmalionAI
+        </p>
       </div>
       <div>
         <ul className="hidden list-none flex-row gap-10 md:flex">
@@ -91,10 +93,10 @@ const BetaNavBar = () => {
         </ul>
       </div>
       <div className="hidden md:flex">
-        <button className="pink-gradient-background scale-10 mr-3 h-10 rounded-full px-5 text-white">
+        <button className="pink-gradient-background scale-10 mr-3 h-10 rounded-full px-5 text-ga-white-default">
           <Link to="/account">Account</Link>
         </button>
-        <button onClick={logOut} className="text-white">
+        <button onClick={logOut} className="text-ga-white-default">
           Log Out
         </button>
       </div>

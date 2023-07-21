@@ -31,7 +31,7 @@
     @apply h-1 w-1;
   }
   ::-webkit-scrollbar-track {
-    @apply bg-white/10;
+    @apply bg-ga-white-default/10;
   }
   ::-webkit-scrollbar-thumb {
     @apply bg-ga-purple-darker;
@@ -56,18 +56,18 @@
 
   .focusable-field {
     @apply _focusable-base;
-    @apply bg-white/5 hover:bg-white/[0.075] active:bg-white/20;
-    @apply placeholder:text-white/25;
+    @apply bg-ga-white-default/5 hover:bg-ga-white-default/[0.075] active:bg-ga-white-default/20;
+    @apply placeholder:text-ga-gray-lighter;
   }
 
   .focusable-icon-button {
     @apply _focusable-base;
-    @apply text-white/50 hover:text-white focus:text-white;
+    @apply focus:text-ga-white-lightest text-ga-white-darker hover:text-ga-white-default;
   }
 
   /** Integrates with solid-router - highlights current selection. */
   .focusable-icon-button.active {
-    @apply text-white;
+    @apply text-ga-white-default;
   }
 
   .btn-base {
@@ -79,19 +79,19 @@
   .btn-primary {
     @apply btn-base;
     @apply bg-ga-purple-darker enabled:hover:bg-ga-purple-default enabled:active:bg-ga-purple-lighter;
-    @apply disabled:cursor-not-allowed disabled:bg-ga-purple-darkest disabled:text-white/25;
+    @apply disabled:cursor-not-allowed disabled:bg-ga-purple-darkest disabled:text-ga-gray-lighter;
   }
 
   .btn-secondary {
     @apply btn-base;
-    @apply bg-stone-600 hover:bg-stone-500 active:bg-stone-400;
+    @apply bg-ga-gray-default hover:bg-ga-gray-lighter active:bg-ga-gray-lightest;
   }
 
   .focusable-card {
     @apply _focusable-base;
     @apply max-h-96 max-w-[10rem];
     @apply rounded-md shadow-md;
-    @apply bg-ga-background-lighter hover:bg-zinc-900 active:bg-zinc-800;
+    @apply bg-ga-background-lighter hover:bg-ga-black-lighter active:bg-ga-black-lightest;
   }
 }
 
@@ -101,7 +101,7 @@
   }
 
   .violet-gradient {
-    @apply bg-gradient-to-r from-ga-violet to-transparent;
+    @apply to-transparent bg-gradient-to-r from-ga-violet;
   }
 
   .pink-gradient-background {
@@ -121,15 +121,15 @@
   }
 
   .heroHeadText {
-    @apply mt-2 text-[40px] font-black text-white xs:text-[50px] sm:text-[60px] lg:text-[80px] lg:leading-[98px];
+    @apply mt-2 text-[40px] font-black text-ga-white-default xs:text-[50px] sm:text-[60px] lg:text-[80px] lg:leading-[98px];
   }
 
   .heroSubText {
-    @apply text-[16px] font-medium text-[#dfd9ff] xs:text-[20px] sm:text-[26px] lg:text-[30px] lg:leading-[40px];
+    @apply text-[16px] font-medium text-ga-white-darker xs:text-[20px] sm:text-[26px] lg:text-[30px] lg:leading-[40px];
   }
 
   .sectionHeadText {
-    @apply text-[30px] font-black text-white xs:text-[40px] sm:text-[50px] md:text-[60px];
+    @apply text-[30px] font-black text-ga-white-default xs:text-[40px] sm:text-[50px] md:text-[60px];
   }
 
   .sectionSubText {
@@ -151,12 +151,13 @@
     bottom: -2px;
     width: 0;
     height: 2px;
-    background-color: #ffffff;
     transition: width 0.3s ease-in-out;
+
+    @apply bg-ga-white-lightest;
   }
 
   .underline-animation.lightblue::after {
-    background-color: #1a78d6;
+    @apply bg-ga-blue;
   }
 
   .underline-animation:hover::after {
@@ -168,9 +169,10 @@
     position: absolute;
     width: 2px;
     height: 2px;
-    background-color: white;
     border-radius: 50%;
     animation: shooting-star linear infinite;
+
+    @apply bg-ga-white-lightest;
   }
 
   @keyframes shooting-star {

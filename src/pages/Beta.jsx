@@ -19,8 +19,8 @@ const Beta = () => {
 
   return (
     <>
-      <div className="bg-ga-black-defaultrelative z-0">
-        <div className="bg-ga-black-defaultrelative bg-cover bg-center bg-no-repeat">
+      <div className="bg-ga-black-default relative z-0">
+        <div className="bg-ga-black-default relative bg-cover bg-center bg-no-repeat">
           <div className="absolute h-full w-full">
             <div className="star-container absolute inset-0 flex items-center justify-center"></div>
           </div>

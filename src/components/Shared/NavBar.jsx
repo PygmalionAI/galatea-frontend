@@ -7,7 +7,7 @@ const NavBar = () => {
   const location = useLocation();
 
   return (
-    <span className="flex items-center justify-between gap-4 bg-ga-black-lightest px-8 py-3 shadow-xl max-sm:p-3">
+    <span className="flex items-center justify-between gap-4 bg-ga-black-lighter px-8 py-3 shadow-xl max-sm:p-3">
       <span className="flex items-center gap-2 font-semibold">
         <a href="/" className="text-ga-white-lightest">
           Pygmalion<span className="text-ga-purple-lighter">AI</span>

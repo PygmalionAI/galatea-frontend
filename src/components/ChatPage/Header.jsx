@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 const Header = (props) => (
   <>
     <div className="mt-8 flex flex-col gap-3">
-      <div className="w-fit rounded-full bg-white/10 p-3">
+      <div className="w-fit rounded-full bg-ga-white-default/10 p-3">
         <MessageCircle className="text-ga-white-lightest/75" size={32} />
       </div>
       <h1 className="text-4xl font-bold text-ga-white-lightest">
@@ -21,7 +21,7 @@ const Header = (props) => (
           <>This is the beginning of the group conversation.</>
         )}
       </h2>
-      <div className="border-b border-white/10" />
+      <div className="border-b border-ga-white-default/10" />
     </div>
   </>
 );
