@@ -62,36 +62,12 @@
 
   .focusable-icon-button {
     @apply _focusable-base;
-    @apply focus:text-ga-white-lightest text-ga-white-darker hover:text-ga-white-default;
+    @apply text-ga-white-darker hover:text-ga-white-default focus:text-ga-white-lightest;
   }
 
   /** Integrates with solid-router - highlights current selection. */
   .focusable-icon-button.active {
     @apply text-ga-white-default;
-  }
-
-  .btn-base {
-    @apply flex gap-1;
-    @apply transition-colors duration-100;
-    @apply rounded-md px-3 py-2;
-  }
-
-  .btn-primary {
-    @apply btn-base;
-    @apply bg-ga-purple-darker enabled:hover:bg-ga-purple-default enabled:active:bg-ga-purple-lighter;
-    @apply disabled:cursor-not-allowed disabled:bg-ga-purple-darkest disabled:text-ga-gray-lighter;
-  }
-
-  .btn-secondary {
-    @apply btn-base;
-    @apply bg-ga-gray-default hover:bg-ga-gray-lighter active:bg-ga-gray-lightest;
-  }
-
-  .focusable-card {
-    @apply _focusable-base;
-    @apply max-h-96 max-w-[10rem];
-    @apply rounded-md shadow-md;
-    @apply bg-ga-background-lighter hover:bg-ga-black-lighter active:bg-ga-black-lightest;
   }
 }
 
@@ -101,7 +77,7 @@
   }
 
   .violet-gradient {
-    @apply to-transparent bg-gradient-to-r from-ga-violet;
+    @apply bg-gradient-to-r from-ga-violet to-transparent;
   }
 
   .pink-gradient-background {
@@ -129,7 +105,7 @@
   }
 
   .sectionHeadText {
-    @apply text-[30px] font-black text-ga-white-default xs:text-[40px] sm:text-[50px] md:text-[60px];
+    @apply text-white text-[30px] font-black xs:text-[40px] sm:text-[50px] md:text-[60px];
   }
 
   .sectionSubText {
