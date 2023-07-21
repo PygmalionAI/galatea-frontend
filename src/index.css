@@ -58,6 +58,7 @@
     @apply _focusable-base;
     @apply bg-ga-white-default/5 hover:bg-ga-white-default/[0.075] active:bg-ga-white-default/20;
     @apply placeholder:text-ga-gray-lighter;
+    @apply focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-ga-purple-default;
   }
 
   .focusable-icon-button {
