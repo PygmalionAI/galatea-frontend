@@ -14,7 +14,12 @@ module.exports = {
         "ga-white": "#f3f3f3",
         "ga-text": "#fff",
         "ga-black": "#090b10",
-        "ga-pink": "#9840a0",
+
+		// used for gradients
+        "ga-pink": "#ec008c",
+      	"ga-orange": "#fc6767",
+		"ga-violet": "#d021a1",
+
         "ga-purple": {
           50: "#c8aad4",
           100: "#c49acf",

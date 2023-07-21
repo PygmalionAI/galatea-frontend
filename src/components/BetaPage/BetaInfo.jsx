@@ -17,7 +17,7 @@ const BetaInfo = () => {
 
         <div>
           <h1 className={`${styles.heroHeadText} text-ga-white`}>Welcome</h1>
-          <p className={`${styles.heroSubText} mt-2 text-ga-white-darker`}>Your account has been created successfully. <br className="sm:block hidden"/> To participate in our closed beta program, <br className="sm:block hidden"/> please join the PygmalionAI <span className="text-[#1A78D6]"><a href="https://discord.gg/pygmalionai" target="_blank" className="underline-animation lightblue">Discord.</a></span> <br className="sm:block hidden"/> <br className="sm:block hidden"/>Thank you!</p>
+          <p className={`${styles.heroSubText} mt-2 text-ga-white-darker`}>Your account has been created successfully. <br className="sm:block hidden"/> To participate in our closed beta program, <br className="sm:block hidden"/> please join the PygmalionAI <span className="text-[#1A78D6]"><a href="https://discord.gg/pygmalionai" target="_blank" className="underline-animation after:bg-blue-500">Discord.</a></span> <br className="sm:block hidden"/> <br className="sm:block hidden"/>Thank you!</p>
         </div>
       </div>
     </section>

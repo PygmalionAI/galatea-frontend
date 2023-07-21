@@ -95,37 +95,15 @@
 
 @layer utilities {
   .landing-gradient {
-    background: #050816; /* fallback for old browsers */
-    background: -webkit-linear-gradient(
-      to right,
-      #030b1c,
-      #050816
-    ); /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(
-      to right,
-      #030b1c,
-      #050816
-    ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    @apply bg-gradient-to-r from-ga-secondary to-ga-primary;
   }
 
   .violet-gradient {
-    background: #d021a1;
-    background: linear-gradient(-90deg, #d021a1 0%, rgba(60, 51, 80, 0) 100%);
-    background: -webkit-linear-gradient(
-      -90deg,
-      #d021a1 0%,
-      rgba(60, 51, 80, 0) 100%
-    );
+    @apply bg-gradient-to-r from-ga-violet to-transparent;
   }
 
   .pink-gradient-background {
-    background: #ec008c; /* fallback for old browsers */
-    background: -webkit-linear-gradient(
-      to top,
-      #ec008c,
-      #fc6767
-    ); /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to top, #ec008c, #fc6767);
+    @apply bg-gradient-to-t from-ga-pink to-ga-orange;
   }
 
   /* For Animating Underlined Text */
