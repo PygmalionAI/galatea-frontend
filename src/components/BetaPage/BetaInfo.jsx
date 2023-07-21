@@ -1,12 +1,7 @@
 import { motion } from 'framer-motion';
 import { styles } from '../../styles';
-import firebase from '../../firebaseConfig';
-import { getAuth } from 'firebase/auth';
 
 const BetaInfo = () => {
-  const auth = getAuth();
-  const user = auth.currentUser;
-
   return (
     <section className="relative w-full h-screen mx-auto">
       <div className={`${styles.paddingX} absolute inset-0 top-[25%] max-w-7xl mx-auto flex flex-row items-start gap-5`}>
