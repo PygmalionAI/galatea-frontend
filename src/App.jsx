@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Beta, Landing, Login, Chat, Register, Account, Characters, NotFoundPage } from './pages';
-import {ToastContainer} from 'react-toastify';
 
 const App = () => {
   return (
