@@ -2,7 +2,6 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 import { close, menu, pygchiselsvg } from "../../assets";
-import { styles } from "../../styles";
 
 const LandingNavBar = () => {
   const [active, setActive] = useState("");
@@ -10,7 +9,7 @@ const LandingNavBar = () => {
 
   return (
     <nav
-      className={`${styles.paddingX} fixed top-0 z-20 flex w-full items-center justify-between py-5`}
+      className={`px-custom fixed top-0 z-20 flex w-full items-center justify-between py-5`}
     >
       <div className="flex items-center">
         <img

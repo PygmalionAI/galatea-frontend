@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
-import { styles } from '../../styles';
 import { pygchiselsvg, menu, close } from '../../assets';
 
 const NotFoundNavBar = () => {
@@ -15,7 +14,7 @@ const NotFoundNavBar = () => {
   }
 
   return (
-    <nav className={`${styles.paddingX} w-full flex items-center justify-between py-5 fixed top-0 z-20`}>
+    <nav className={`px-custom w-full flex items-center justify-between py-5 fixed top-0 z-20`}>
       <div className="flex items-center">
         <img src={pygchiselsvg} alt="chisel" className="w-9 h-9 object-contain"/>
         <p className="text-white text-[18px] font-bold">PygmalionAI</p>
