@@ -1,6 +1,4 @@
 import { Eye, EyeOff } from 'lucide-react'
-import firebase from '../../firebaseConfig';
-import { getAuth } from 'firebase/auth';
 import React, { useState, useRef, useEffect } from 'react';
 import { TextInput, Button, Alert } from '../Shared';
 import { useNavigate } from 'react-router-dom';
@@ -12,7 +10,6 @@ const RegisterForm = (props) => {
   const [errorMessage, setErrorMessage] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
   const [signedUp, setSignedUp] = useState(false);
-  const auth = getAuth();
 
   const navigateTo = useNavigate();
   const submitButtonRef = useRef();

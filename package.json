@@ -9,7 +9,7 @@
     "build": "vite build",
     "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "server": "nodemon --delay 2s --watch server.js server.js"
+    "server": "nodemon --delay 2s --watch src-server/server.js src-server/server.js"
   },
   "dependencies": {
     "@react-three/drei": "^9.77.3",
