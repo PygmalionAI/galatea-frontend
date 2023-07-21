@@ -24,13 +24,12 @@ const RegisterForm = (props) => {
   const handleSubmit = async (evt) => {
     evt.preventDefault();
     setisRegistrationPending(true);
-    if (hasPopupBeenOpened || !showPopup) {
-      return; // Exit early if conditions aren't met
+    if (!hasPopupBeenOpened) {
+      toast.loading("Please accept the terms of registration.");
+      return;
     }
-    const id = toast.loading("Registration pending...", {
-      position: toast.POSITION.TOP_RIGHT
-    });
-    
+    else {
+      const id = toast.loading("Signing you up...");
       const username = evt.target.username.value;
       const email = evt.target.email.value;
       const password = evt.target.password.value;
@@ -43,15 +42,17 @@ const RegisterForm = (props) => {
       // Call the signUp function and pass the required information
       await signUp(email, username, password);
       // Update success message after form data is handled successfully
-      toast.update(id, { render: "Registration successful", type: "success", isLoading: false });
+      console.log(`Successfully registered user: ${username}`);
+      toast.update(id, { render: `Welcome, ${username}! Registration successful.`, type: "success", isLoading: false });
       setSignedUp(true);
       setisRegistrationPending(false);
      } catch (error) {
+        toast.dismiss(id);
        // Handle any errors that might occur during the sign-up process
        console.log(`There was an error while signing up: ${error}`);
        setErrorMessage("Registration failed. Please make sure that your credentials are not already in use.");
      }
-  };
+  }};
 
   useEffect(() => {
     if (signedUp) {
@@ -115,17 +116,17 @@ const RegisterForm = (props) => {
             Sign Up
           </Button>
         </div>
-      }>
+      } modal>
         <div>Please click accept below.</div>
         <button className="close" onClick={(e) => {handlePopupClose(e)}}>I Accept</button>
       </Popup>
 
-        {/* {errorMessage && (
+        {errorMessage && (
           <Alert schema="error" title="Registration Failed">
             {errorMessage}
           </Alert>
         )}
-        {successMessage && (
+        {/* {successMessage && (
           <Alert schema="success" title="Registration Successful">
             {successMessage}
           </Alert>
