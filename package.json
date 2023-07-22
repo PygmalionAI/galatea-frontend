@@ -12,9 +12,9 @@
     "server": "nodemon --delay 2s --watch src-server/server.js src-server/server.js"
   },
   "dependencies": {
-    "@react-three/drei": "^9.77.3",
-    "@react-three/fiber": "^8.13.3",
+    "@react-three/drei": "^9.79.3",
     "axios": "^1.4.0",
+    "bcrypt": "^5.1.0",
     "body-parser": "^1.20.2",
     "concurrently": "^8.2.0",
     "cors": "^2.8.5",
@@ -23,17 +23,14 @@
     "express": "^4.18.2",
     "firebase": "^9.23.0",
     "firebase-admin": "^11.9.0",
-    "framer-motion": "^10.12.17",
     "lucide-react": "^0.252.0",
     "maath": "^0.7.0",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-parallax-tilt": "^1.7.149",
     "react-router-dom": "^6.13.0",
     "react-toggle-dark-mode": "^1.1.1",
     "showdown": "^2.1.0",
-    "three": "^0.153.0",
     "vite-plugin-mkcert": "^1.16.0"
   },
   "devDependencies": {
