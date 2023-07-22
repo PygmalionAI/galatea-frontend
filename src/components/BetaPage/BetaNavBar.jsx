@@ -1,17 +1,13 @@
-import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
+import { signOut } from "firebase/auth";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { checkAuth } from "../../apis/api";
 import { close, menu, pygchiselsvg } from "../../assets";
-import { PointerLockControls } from '@react-three/drei';
-import { pygchiselsvg, menu, close } from '../../assets';
-import React, { useEffect, useState } from 'react';
-import { styles } from '../../styles';
-import { checkAuth, signOut } from '../../apis/api';
 
 const BetaNavBar = () => {
   const [active, setActive] = useState("");
   const [toggle, setToggle] = useState(false);
-  const [loggedIn, setLoggedIn] = useState(false);  
+  const [loggedIn, setLoggedIn] = useState(false);
   const navigateTo = useNavigate();
 
   // On page load, check if the user is signed in
@@ -20,20 +16,20 @@ const BetaNavBar = () => {
       .then((res) => {
         setLoggedIn(res);
         if (!res) {
-          navigateTo('/login'); // Navigate to login page if not authenticated
+          navigateTo("/login"); // Navigate to login page if not authenticated
         }
       })
       .catch((err) => {
         console.log(err);
       });
-  }, []);  
+  }, []);
 
   // Sign the user out when button is clicked
   const logOut = () => {
     signOut()
       .then((res) => {
         setLoggedIn(false);
-        navigateTo('/login');
+        navigateTo("/login");
       })
       .catch((err) => {
         console.log(err);
