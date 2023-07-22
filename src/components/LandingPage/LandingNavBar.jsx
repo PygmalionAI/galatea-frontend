@@ -9,7 +9,7 @@ const LandingNavBar = () => {
 
   return (
     <nav
-      className={`px-custom fixed top-0 z-20 flex w-full items-center justify-between py-5`}
+      className={`px-custom fixed top-0 z-20 flex w-full items-center justify-between py-5 backdrop-blur-2xl`}
     >
       <div className="flex items-center">
         <img
