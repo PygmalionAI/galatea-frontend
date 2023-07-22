@@ -1,14 +1,14 @@
 import { Info, LandingNavBar } from "../components";
+import Footer from "../components/Shared/Footer";
 import StarsBackground from "../components/Shared/StarsBackground";
 
 const Landing = () => {
   return (
-    <div className="bg-primary">
-      <div className="bg-primary bg-cover bg-center bg-no-repeat">
-        <StarsBackground />
-        <LandingNavBar />
-        <Info />
-      </div>
+    <div className="bg-ga-black-lighter">
+      <StarsBackground />
+      <LandingNavBar />
+      <Info />
+      <Footer />
     </div>
   );
 };

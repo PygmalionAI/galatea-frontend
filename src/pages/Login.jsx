@@ -3,7 +3,7 @@ import { LoginForm, SimpleNavBar } from "../components";
 const Login = () => {
   return (
     <>
-      <div className="ga-black-lighter scrollbar-thin scrollbar-thumb-white/10 scrollbar-track-ga-purple/900 scrollbar flex h-screen flex-col">
+      <div className="scrollbar-thin scrollbar-thumb-white/10 scrollbar-track-ga-purple/900 scrollbar flex h-screen flex-col bg-ga-black-lighter">
         <div>
           <SimpleNavBar />
         </div>
