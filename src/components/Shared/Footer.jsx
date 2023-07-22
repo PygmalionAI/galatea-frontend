@@ -10,13 +10,13 @@ const Footer = () => {
   };
 
   return (
-    <div className="flex flex-col gap-8 bg-[var(--ga-lighter)] px-8 py-6 shadow-xl max-sm:p-3">
+    <div className="flex flex-col gap-8 bg-ga-black-default px-8 py-6 shadow-xl max-sm:p-3">
       {/* top row */}
       <div className="flex flex-col justify-between gap-8 md:flex-row">
         {/* logo and about */}
         <div className="flex flex-col gap-2">
-          <Link to="/" className="w-fit text-[var(--ga-text)]">
-            Pygmalion<span className="text-purple-400">AI</span>
+          <Link to="/" className="w-fit">
+            Pygmalion<span className="text-ga-purple-default">AI</span>
           </Link>
           <p className="max-w-md text-sm font-light">
             An open-source project dedicated to creating large language models
@@ -62,7 +62,7 @@ const Footer = () => {
         </small>
 
         <small
-          className="cursor-pointer rounded-xl p-1 text-xs font-thin italic text-purple-400 transition-colors hover:bg-purple-400 hover:text-gray-900"
+          className="cursor-pointer rounded-xl p-1 text-xs font-thin italic text-ga-purple-default transition-colors hover:bg-ga-purple-default hover:text-ga-black-lightest"
           onClick={handleScrollToTop}
         >
           <ArrowUp />
