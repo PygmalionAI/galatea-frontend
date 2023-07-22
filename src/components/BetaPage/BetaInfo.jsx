@@ -1,6 +1,3 @@
-import { motion } from 'framer-motion';
-import { styles } from '../../styles';
-
 const BetaInfo = () => {
   return (
     <section className="relative mx-auto h-screen w-full">
