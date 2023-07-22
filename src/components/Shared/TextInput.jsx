@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 const TextInput = ({
   fieldName,
@@ -8,10 +8,12 @@ const TextInput = ({
   isMultiline,
   type,
   required,
+  setInputFn,
 }) => {
   const [inputValue, setInputValue] = useState("");
 
   const handleChange = (e) => {
+    setInputFn(e.target.value);
     setInputValue(e.target.value);
   };
 

@@ -1,8 +1,21 @@
+import { useState } from "react";
 import { Button, SimpleNavBar, TextInput } from "../components";
 import Footer from "../components/Shared/Footer";
 import StarsBackground from "../components/Shared/StarsBackground";
 
 const ContactUs = () => {
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(form);
+    // send form data to backend
+  };
+
   return (
     <div className="scrollbar-thin scrollbar-thumb-white/10 scrollbar-track-purple/900 scrollbar flex min-h-screen flex-col justify-between gap-12">
       <StarsBackground />
@@ -35,18 +48,20 @@ const ContactUs = () => {
           </g>
         </svg>
 
-        <form className="flex flex-col gap-4">
+        <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
           <TextInput
             fieldName="Name"
             placeholder="Your name"
             type="text"
             required
+            setInputFn={(val) => setForm({ ...form, name: val })}
           />
           <TextInput
             fieldName="email"
             placeholder="Your email address"
             type="email"
             required
+            setInputFn={(val) => setForm({ ...form, email: val })}
           />
           <TextInput
             fieldName="Message"
@@ -54,6 +69,7 @@ const ContactUs = () => {
             type="text"
             isMultiline
             required
+            setInputFn={(val) => setForm({ ...form, message: val })}
           />
           <Button type="submit" text="Send Message" className="w-full">
             Send
