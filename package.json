@@ -37,6 +37,7 @@
     "react-router-dom": "^6.13.0",
     "react-toggle-dark-mode": "^1.1.1",
     "showdown": "^2.1.0",
+    "tailwind-merge": "^1.14.0",
     "three": "^0.153.0",
     "vite-plugin-mkcert": "^1.16.0"
   },

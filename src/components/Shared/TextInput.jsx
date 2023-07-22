@@ -26,7 +26,7 @@ const TextInput = ({
         <label htmlFor={fieldName}>
           <div className={helperText ? "" : "pb-1"}>{label}</div>
           {helperText && (
-            <p className="mt-[-0.125rem] pb-1 text-sm text-white/50">
+            <p className="mt-[-0.125rem] pb-1 text-sm text-ga-white-darker">
               {helperText}
             </p>
           )}
@@ -49,7 +49,7 @@ const TextInput = ({
           name={fieldName}
           required={required}
           placeholder={renderedPlaceholder}
-          className="focusable-field w-full rounded-xl px-4 py-2 !text-white"
+          className="focusable-field w-full rounded-xl px-4 py-2 !text-ga-white-default"
           value={inputValue}
           onChange={handleChange}
           style={{ height: "auto" }}

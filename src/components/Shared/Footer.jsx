@@ -35,7 +35,7 @@ const Footer = () => {
             <Link to="/privacy" className="underline-animation w-fit">
               <li>Privacy Policy</li>
             </Link>
-            <Link className="underline-animation w-fit">
+            <Link to="/terms" className="underline-animation w-fit">
               <li>Terms of use</li>
             </Link>
           </ul>
