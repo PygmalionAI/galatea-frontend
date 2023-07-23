@@ -78,7 +78,7 @@
   }
 
   .violet-gradient {
-    @apply bg-gradient-to-r from-ga-violet to-transparent;
+    @apply bg-gradient-to-b from-ga-violet to-transparent;
   }
 
   .pink-gradient-background {
