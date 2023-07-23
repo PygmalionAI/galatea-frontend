@@ -1,27 +1,36 @@
+import { ChevronRight } from "lucide-react";
+import Button from "../Shared/Button";
 import { LandingSection } from "./LandingSection";
 
 const Info = () => {
   return (
-    <main className="px-custom mx-auto flex min-h-screen w-full max-w-7xl flex-col gap-20 py-40">
-      <section className="relative flex animate-fade-up flex-row gap-8 py-12">
-        <div className="absolute -top-16 left-1/2 flex rotate-90 flex-col items-center justify-center md:static md:rotate-0">
-          <div className="h-5 w-5 rounded-full bg-ga-violet" />
-          <div className="violet-gradient h-40 w-2 sm:h-96" />
-        </div>
-
+    <main className="px-custom mx-auto flex min-h-screen w-full max-w-7xl flex-col gap-20 py-16">
+      <section className="relative flex min-h-[90vh] animate-fade-up flex-col items-center justify-center gap-8 py-12">
         <div>
-          <h1 className={`heroHeadText text-ga-white-default`}>
+          <h1 className={`heroHeadText text-center text-ga-white-default`}>
             Pygmalion<span className="text-ga-blue">AI</span>
           </h1>
-          <p className={`heroSubText mt-2 text-ga-white-darker`}>
+          <p className={`heroSubText mt-2 text-center text-ga-white-darker`}>
             PygmalionAI is an open-source project
             <br className="hidden sm:block" /> dedicated to creating large
             language models
             <br className="hidden sm:block" /> for chat and role-play purposes.
             <br className="hidden sm:block" />{" "}
             <br className="mb-4 hidden sm:block" />
-            Coming soon!
           </p>
+        </div>
+
+        <div className="flex flex-col items-center gap-4">
+          <Button
+            text="Join our Discord"
+            link="https://discord.gg/5QgbeuX"
+            classes="md:text-lg font-medium md:px-12 md:py-3 rounded-2xl flex flex-row gap-2"
+          >
+            <p>Sign Up Now</p>
+            <ChevronRight />
+          </Button>
+
+          <p className="text-ga-white-darker">Pygmalion is coming soon!</p>
         </div>
       </section>
 
