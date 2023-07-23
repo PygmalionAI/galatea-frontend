@@ -4,7 +4,7 @@ export function LandingSection(props) {
   return (
     <section
       className={twJoin(
-        "mx-auto flex max-w-5xl flex-col gap-4 md:gap-8",
+        "mx-auto flex max-w-5xl flex-col gap-4 transition-all hover:scale-110 md:gap-8",
         props.align === "left" ? "items-start" : "items-end",
       )}
     >
