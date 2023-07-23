@@ -3,28 +3,53 @@ module.exports = {
   content: ["./src/**/*.{js,jsx}"],
   mode: "jit",
   theme: {
+    colors: {
+      transparent: "transparent",
+
+      "ga-white": {
+        lightest: "#fff",
+        default: "#f3f3f3",
+        darker: "#cfd3d6",
+      },
+
+      // could be improved
+      "ga-gray": {
+        lightest: "#91919a",
+        lighter: "#78787b",
+        default: "#52525b",
+        darker: "#3f3f46",
+      },
+
+      "ga-black": {
+        lightest: "#222828",
+        lighter: "#0d1017",
+        default: "#050816",
+        darker: "#030b1c",
+      },
+
+      // accent color
+      "ga-purple": {
+        lightest: "#c090cb",
+        lighter: "#b556b4",
+        default: "#aa4bae",
+        darker: "#9840a0",
+        darkest: "#401c4c",
+      },
+
+      // for toasts
+      "ga-green": "#4aee70",
+      "ga-red": "#ff5d4e",
+
+      // used for gradients
+      "ga-pink": "#ec008c",
+      "ga-orange": "#fc6767",
+      "ga-violet": "#d021a1",
+      "ga-blue": "#2088df",
+    },
+
     extend: {
-      colors: {
-        background: "#090b10",
-        "background-lighter": "#0d1017",
-        purple: {
-          50: "#c8aad4",
-          100: "#c49acf",
-          200: "#bf80c8",
-          300: "#bb69c0",
-          400: "#b556b4",
-          500: "#aa4bae",
-          600: "#9840a0",
-          700: "#7f348b",
-          800: "#60286e",
-          900: "#401c4c",
-        },
-        primary: "#050816",
-        secondary: "#030b1c",
-        tertiary: "#005282",
-        "black-100": "#100d25",
-        "black-200": "#090325",
-        "white-100": "#f3f3f3",
+      fontFamily: {
+        sans: ["Poppins"],
       },
       boxShadow: {
         card: "0px 35px 120px -15px #211e35",

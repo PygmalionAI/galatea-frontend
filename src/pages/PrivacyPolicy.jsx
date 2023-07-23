@@ -12,7 +12,7 @@ const PrivacyPolicy = () => {
   }, []);
 
   return (
-    <div className="ga-black scrollbar-thin scrollbar-thumb-white/10 scrollbar-track-purple/900 scrollbar flex min-h-screen flex-col justify-between gap-12">
+    <div className="scrollbar-thin scrollbar-thumb-white/10 scrollbar-track-purple/900 scrollbar flex min-h-screen flex-col justify-between gap-12 bg-ga-black-lighter">
       <StarsBackground />
 
       <div>
