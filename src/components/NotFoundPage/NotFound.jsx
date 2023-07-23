@@ -1,5 +1,3 @@
-import { styles } from '../../styles';
-
 const NotFound = () => {
   return (
     <section className="relative w-full h-screen mx-auto">
