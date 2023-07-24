@@ -1,4 +1,4 @@
-function App() {
+export default function App() {
 	return (
 		<div>
 			<h1 className="mb-2 mt-2 text-3xl font-bold text-ga-purple-default">
@@ -7,5 +7,3 @@ function App() {
 		</div>
 	);
 }
-
-export default App;
