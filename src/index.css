@@ -1,4 +1,170 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
 /* import tailwind */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+	/* style resets */
+
+	* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+		font-family: inherit;
+		scroll-behavior: smooth;
+		color-scheme: dark;
+		outline: none;
+	}
+
+	*:focus {
+		outline: none;
+	}
+
+	body {
+		font-family: "Poppins", sans-serif;
+	}
+
+	/* scrollbar */
+
+	::-webkit-scrollbar {
+		@apply h-1 w-1;
+	}
+	::-webkit-scrollbar-track {
+		@apply bg-ga-white-default/10;
+	}
+	::-webkit-scrollbar-thumb {
+		@apply bg-ga-purple-darker;
+	}
+	::-webkit-scrollbar-thumb:hover {
+		@apply bg-ga-purple-default;
+	}
+}
+
+@layer components {
+	/* for firefox. */
+	.scrollbar {
+		scrollbar-color: rgb(152 64 160) transparent;
+		scrollbar-width: thin;
+	}
+
+	/* Focus/accessibility-related utilities. */
+
+	._focusable-base {
+		@apply transition-all duration-100;
+	}
+
+	.focusable-field {
+		@apply _focusable-base;
+		@apply bg-ga-white-default/5 hover:bg-ga-white-default/[0.075] active:bg-ga-white-default/20;
+		@apply placeholder:text-ga-gray-lighter;
+		@apply focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-ga-purple-default;
+	}
+
+	.focusable-icon-button {
+		@apply _focusable-base;
+		@apply text-ga-white-darker hover:text-ga-white-default focus:text-ga-white-lightest;
+	}
+
+	/** Integrates with solid-router - highlights current selection. */
+	.focusable-icon-button.active {
+		@apply text-ga-white-default;
+	}
+}
+
+@layer utilities {
+	.landing-gradient {
+		@apply bg-gradient-to-r from-ga-black-darker to-ga-black-default;
+	}
+
+	.violet-gradient {
+		@apply bg-gradient-to-r from-ga-violet to-transparent;
+	}
+
+	.pink-gradient-background {
+		@apply bg-gradient-to-t from-ga-pink to-ga-orange;
+	}
+
+	.px-custom {
+		@apply px-6 sm:px-16;
+	}
+
+	.py-custom {
+		@apply py-6 sm:py-16;
+	}
+
+	.p-custom {
+		@apply px-6 py-6 sm:px-16 sm:py-16;
+	}
+
+	.heroHeadText {
+		@apply mt-2 text-[40px] font-black text-ga-white-default xs:text-[50px] sm:text-[60px] lg:text-[80px] lg:leading-[98px];
+	}
+
+	.heroSubText {
+		@apply text-[16px] font-medium text-ga-white-darker xs:text-[20px] sm:text-[26px] lg:text-[30px] lg:leading-[40px];
+	}
+
+	.sectionHeadText {
+		@apply text-white text-[30px] font-black xs:text-[40px] sm:text-[50px] md:text-[60px];
+	}
+
+	.sectionSubText {
+		@apply text-[14px] uppercase tracking-wider text-ga-black-darker sm:text-[18px];
+	}
+
+	/* For Animating Underlined Text */
+
+	.underline-animation {
+		position: relative;
+		display: inline-block;
+		text-decoration: none;
+	}
+
+	.underline-animation::after {
+		content: "";
+		position: absolute;
+		left: 0;
+		bottom: -2px;
+		width: 0;
+		height: 2px;
+		transition: width 0.3s ease-in-out;
+
+		@apply bg-ga-white-lightest;
+	}
+
+	.underline-animation.lightblue::after {
+		@apply bg-ga-blue;
+	}
+
+	.underline-animation:hover::after {
+		width: 100%;
+	}
+
+	/* Background Stars for Beta and Landing Page */
+	.star {
+		position: absolute;
+		width: 2px;
+		height: 2px;
+		border-radius: 50%;
+		animation: shooting-star linear infinite;
+
+		@apply bg-ga-white-lightest;
+	}
+
+	@keyframes shooting-star {
+		0% {
+			opacity: 0;
+			transform: translate(-50px, -50px);
+		}
+		50% {
+			opacity: 1;
+			transform: translate(0, 0);
+		}
+		100% {
+			opacity: 0;
+			transform: translate(50px, 50px);
+		}
+	}
+}
