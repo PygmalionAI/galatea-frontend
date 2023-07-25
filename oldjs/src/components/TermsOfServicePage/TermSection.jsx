@@ -1,8 +1,0 @@
-export default function TermSection(props) {
-  return (
-    <section className={`flex flex-col gap-1 ${props.level === 1 && 'px-0'} ${props.level === 2 && 'px-2'}  ${props.level === 3 && 'px-4'} `}>
-      <p className={`${props.level === 1 && 'font-bold' }`}>{props.content}</p>
-	  	{props.children}
-    </section>
-  );
-}
