@@ -1,5 +1,5 @@
 import { Eye, EyeOff } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { signUp } from "../../apis/api";
 import { Alert, Button, TextInput } from "../Shared";
@@ -12,7 +12,6 @@ export const RegisterForm = () => {
 	const [signedUp, setSignedUp] = useState(false);
 
 	const navigateTo = useNavigate();
-	const submitButtonRef = useRef<HTMLButtonElement>(null);
 
 	useEffect(() => {
 		if (signedUp) {
@@ -85,11 +84,6 @@ export const RegisterForm = () => {
 						placeholder="Confirm Password"
 						type={isConfirmPasswordVisible ? "text" : "password"}
 						required
-						onKeyDown={(event: any) => {
-							if (event.key === "Enter") {
-								if (submitButtonRef.current) submitButtonRef.current.click();
-							}
-						}}
 					/>
 					<button
 						onClick={(e) => {
@@ -101,7 +95,9 @@ export const RegisterForm = () => {
 						{isConfirmPasswordVisible ? <Eye /> : <EyeOff />}
 					</button>
 				</div>
-				<Button type="submit">Sign Up</Button>
+				<Button type="submit" schema="primary">
+					Sign Up
+				</Button>
 				{errorMessage && (
 					<Alert schema="error" title="Registration Failed">
 						{errorMessage}

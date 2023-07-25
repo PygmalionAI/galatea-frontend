@@ -8,12 +8,13 @@ export const TextInput = (props: {
 	isMultiline?: boolean;
 	type: string;
 	required: boolean;
-	setInputFn: (value: string) => void;
+	setInputFn?: (value: string) => void;
 }) => {
 	const [inputValue, setInputValue] = useState("");
 
 	const handleChange = (e: any) => {
-		props.setInputFn(e.target.value);
+		if (props.setInputFn) props.setInputFn(e.target.value);
+
 		setInputValue(e.target.value);
 	};
 

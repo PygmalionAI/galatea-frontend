@@ -3,7 +3,7 @@ import { twJoin } from "tailwind-merge";
 export const Button = (props: {
 	schema: "primary" | "secondary";
 	type: "button" | "submit";
-	disabled: boolean;
+	disabled?: boolean;
 	children: React.ReactNode;
 }) => (
 	<button
