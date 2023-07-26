@@ -1,15 +1,35 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
+import { twJoin } from "tailwind-merge";
 import { close, menu, pygchiselsvg } from "../../assets";
 
 const LandingNavBar = () => {
-  const [active, setActive] = useState("");
   const [toggle, setToggle] = useState(false);
+  const [showNavBarBackground, setShowNavBarBackground] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 100) {
+        setShowNavBarBackground(true);
+      } else {
+        setShowNavBarBackground(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   return (
     <nav
-      className={`px-custom fixed top-0 z-20 flex w-full items-center justify-between py-5 backdrop-blur-2xl`}
+      className={twJoin(
+        "px-custom fixed top-0 z-20 flex w-full items-center justify-between py-5",
+        showNavBarBackground ? "backdrop-blur-3xl" : "bg-transparent",
+      )}
     >
       <div className="flex items-center">
         <img

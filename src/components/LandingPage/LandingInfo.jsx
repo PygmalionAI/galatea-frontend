@@ -1,16 +1,31 @@
 import { ChevronRight } from "lucide-react";
+import wave from "../../assets/wave.svg";
+// import bubbles from "../../assets/bubbles.svg";
 import Button from "../Shared/Button";
 import { LandingSection } from "./LandingSection";
 
 const Info = () => {
   return (
     <main className="px-custom mx-auto flex min-h-screen w-full max-w-7xl flex-col gap-20 py-16">
+      {/* <img
+        src={bubbles}
+        alt="wave"
+        className="absolute left-0 right-0 top-10 h-screen rotate-180 object-cover opacity-30 saturate-0"
+      /> */}
+
+      <img
+        src={wave}
+        alt="wave"
+        className="absolute left-0 right-0 top-10 w-screen object-contain opacity-10"
+      />
+
       <section className="relative flex min-h-[90vh] animate-fade-up flex-col items-center justify-center gap-8 py-12">
-        <div>
-          <h1 className={`heroHeadText text-center text-ga-white-default`}>
+        <div className="flex flex-col items-center justify-center gap-8">
+          <h1 className="text-ga-white-default` text-5xl font-bold md:text-7xl">
             Pygmalion<span className="text-ga-blue">AI</span>
           </h1>
-          <p className={`heroSubText mt-2 text-center text-ga-white-darker`}>
+
+          <p className={`text-center text-3xl text-ga-white-darker`}>
             PygmalionAI is an open-source project
             <br className="hidden sm:block" /> dedicated to creating large
             language models
@@ -20,12 +35,13 @@ const Info = () => {
           </p>
         </div>
 
-        <div className="flex flex-col items-center gap-4">
+        <div className="group flex flex-col items-center gap-4">
           <Button
             text="Join our Discord"
             link="https://discord.gg/5QgbeuX"
-            classes="md:text-lg font-medium md:px-12 md:py-3 rounded-2xl flex flex-row gap-2"
+            classes="md:text-lg font-medium md:px-12 md:py-3 rounded-2xl flex flex-row gap-2 relative"
           >
+            <div className="absolute h-80 w-80 rounded-full bg-ga-purple-default/40 blur-3xl transition-all duration-1000 ease-in-out group-hover:-rotate-45 group-hover:scale-y-150 group-hover:blur-2xl" />
             <p>Sign Up Now</p>
             <ChevronRight />
           </Button>
