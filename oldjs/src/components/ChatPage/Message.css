@@ -1,4 +1,0 @@
-/** Makes italics a little darker within messages. */
-.message-text em {
-    opacity: 0.5;
-  }

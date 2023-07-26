@@ -1,9 +1,36 @@
-export default function App() {
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import {
+	Account,
+	Beta,
+	Characters,
+	Chat,
+	Landing,
+	Login,
+	NotFoundPage,
+	PrivacyPolicy,
+	Register,
+	ContactUs,
+	TermsOfService
+} from "./pages";
+
+const App = () => {
 	return (
-		<div>
-			<h1 className="mb-2 mt-2 text-3xl font-bold text-ga-purple-default">
-				HELLO
-			</h1>
-		</div>
+		<Router>
+			<Routes>
+				<Route path="*" element={<NotFoundPage />} />
+				<Route path="/" element={<Landing />} />
+				<Route path="/beta" element={<Beta />} />
+				<Route path="/login" element={<Login />} />
+				<Route path="/chat" element={<Chat />} />
+				<Route path="/register" element={<Register />} />
+				<Route path="/account" element={<Account />} />
+				<Route path="/characters" element={<Characters />} />
+				<Route path="/privacy" element={<PrivacyPolicy />} />
+				<Route path="/contactus" element={<ContactUs />} />
+				<Route path="/terms" element={<TermsOfService />} />
+			</Routes>
+		</Router>
 	);
-}
+};
+
+export default App;
