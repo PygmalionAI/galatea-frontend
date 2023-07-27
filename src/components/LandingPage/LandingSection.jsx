@@ -47,7 +47,7 @@ export function LandingSection(props) {
           {/* flip horizontaly in place with smooth animation when it comes into view */}
           <m.div
             initial={{
-              scale: 0.85,
+              scale: 0.8,
             }}
             transition={{
               ease: "easeInOut",
@@ -55,16 +55,16 @@ export function LandingSection(props) {
             whileInView={{
               duration: 1.5,
               scale: 1.0,
-              rotatey: -10,
               rotateZ: -10,
             }}
             whileTap={{
               scale: 0.8,
+              rotateZ: 50,
             }}
           >
             <img
               src={props.imageLink}
-              className="mx-auto w-2/3 rounded-3xl p-8 sm:max-w-sm md:w-full md:p-12"
+              className="mx-auto w-2/3 rounded-3xl bg-gradient-to-t from-ga-blue/10 to-ga-purple-darker/10 p-8 sm:max-w-sm md:w-full md:p-16"
             />
           </m.div>
 

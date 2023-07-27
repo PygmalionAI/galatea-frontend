@@ -44,7 +44,7 @@ const Info = () => {
           translateY: handleMouseMove()[1],
         }}
       >
-        <section className="relative flex min-h-[75vh] animate-fade-up flex-col items-center justify-center gap-8 md:min-h-[70vh]">
+        <section className="relative flex min-h-[75vh] animate-fade-up flex-col items-center justify-center gap-8 md:min-h-[65vh]">
           <div className="flex flex-col items-center justify-center gap-8">
             <h1 className="text-ga-white-default` text-5xl font-bold md:text-7xl">
               Pygmalion<span className="text-ga-blue">AI</span>
@@ -80,7 +80,7 @@ const Info = () => {
         </section>
       </motion.div>
 
-      <div className="flex flex-col gap-32">
+      <div className="flex flex-col gap-36">
         <LandingSection
           title="About Us"
           content="PygmalionAI was founded by a group of AI enthusiasts who are passionate about creating powerful language models. Our team is comprised of talented individuals with diverse backgrounds and skillsets, all united by a common goal: to build a thriving community of AI-driven chat and role-play enthusiasts. We are committed to delivering an exceptional user experience and providing a platform where creativity knows no bounds."
