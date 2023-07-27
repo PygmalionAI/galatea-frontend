@@ -46,6 +46,7 @@ export function LandingSection(props) {
 
           {/* flip horizontaly in place with smooth animation when it comes into view */}
           <m.div
+            className="absolute md:static"
             initial={{
               scale: 0.8,
             }}
@@ -64,11 +65,14 @@ export function LandingSection(props) {
           >
             <img
               src={props.imageLink}
-              className="mx-auto w-2/3 rounded-3xl bg-gradient-to-t from-ga-blue/10 to-ga-purple-darker/10 p-8 sm:max-w-sm md:w-full md:p-16"
+              className={twJoin(
+                props.align == "left" ? "ml-auto" : "mr-auto",
+                "w-2/3 rounded-3xl bg-gradient-to-t from-ga-blue/10 to-ga-purple-darker/10 p-2 opacity-10 sm:max-w-sm md:w-full md:p-16 md:opacity-100",
+              )}
             />
           </m.div>
 
-          <div className="absolute h-60 w-60 rounded-full bg-ga-blue/10 blur-3xl transition-all duration-1000 ease-in-out group-hover:scale-125 group-hover:blur-2xl" />
+          <div className="absolute h-60 w-60 rounded-full md:bg-ga-blue/10 blur-3xl transition-all duration-1000 ease-in-out group-hover:scale-125 group-hover:blur-2xl" />
         </div>
       </m.div>
     </LazyMotion>
