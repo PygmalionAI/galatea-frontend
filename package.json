@@ -17,11 +17,9 @@
 		"express": "^4.18.2",
 		"firebase": "^10.1.0",
 		"lucide-react": "^0.263.1",
-		"lucide-solid": "^0.263.0",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",
 		"react-router-dom": "^6.14.2",
-		"solid-js": "^1.7.8",
 		"tailwind-merge": "^1.14.0",
 		"ts-dotenv": "^0.9.1"
 	},
