@@ -28,7 +28,7 @@ export function LandingSection(props) {
           >
             <h1
               className={twJoin(
-                "overflow-visible bg-gradient-to-br from-ga-white-default via-ga-white-default to-ga-blue bg-clip-text text-center text-3xl font-bold text-transparent md:text-5xl",
+                "overflow-visible bg-gradient-to-br from-ga-white-default via-ga-white-default to-ga-purple-default bg-clip-text text-center text-3xl font-bold text-transparent md:text-5xl",
                 props.align == "left" ? "text-start" : "text-end",
               )}
             >
@@ -64,7 +64,7 @@ export function LandingSection(props) {
           >
             <img
               src={props.imageLink}
-              className="mx-auto w-1/2 rounded-3xl p-8 sm:max-w-sm md:w-full md:p-12"
+              className="mx-auto w-2/3 rounded-3xl p-8 sm:max-w-sm md:w-full md:p-12"
             />
           </m.div>
 

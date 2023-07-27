@@ -29,7 +29,7 @@ const Info = () => {
 
   return (
     <main className="px-custom mx-auto flex min-h-screen w-full max-w-7xl flex-col items-center justify-center gap-20 py-16">
-      <div className="absolute -top-40 h-[20rem] w-[60rem] rounded-full bg-ga-purple-default/30 opacity-50 blur-[100rem] transition-all duration-1000 ease-in-out" />
+      <div className="absolute -top-40 h-[20rem] w-[90vw] rounded-full bg-ga-purple-default/30 opacity-50 blur-[100rem] transition-all duration-1000 ease-in-out" />
 
       <img
         src={wave}
@@ -44,7 +44,7 @@ const Info = () => {
           translateY: handleMouseMove()[1],
         }}
       >
-        <section className="relative flex min-h-[90vh] animate-fade-up flex-col items-center justify-center gap-8 py-12">
+        <section className="relative flex min-h-[75vh] animate-fade-up flex-col items-center justify-center gap-8 md:min-h-[70vh]">
           <div className="flex flex-col items-center justify-center gap-8">
             <h1 className="text-ga-white-default` text-5xl font-bold md:text-7xl">
               Pygmalion<span className="text-ga-blue">AI</span>
@@ -124,9 +124,14 @@ const Info = () => {
         />
       </div>
 
-      <div className="relative my-24">
-        <h1 className="text-3xl font-bold">Coming Soon</h1>
-        <span className="absolute bottom-0 -z-10 h-8 w-full bg-ga-red"></span>
+      <div className="relative my-24 flex flex-col items-center gap-4">
+        <div className="h-2 w-full rounded-xl bg-ga-purple-default"></div>
+        <div className="px-4 text-center">
+          <h4 className="text-3xl font-bold text-ga-white-darker">
+            Coming Soon
+          </h4>
+          <p className="text-ga-gray-lightest">Keep your eyes on us</p>
+        </div>
       </div>
     </main>
   );

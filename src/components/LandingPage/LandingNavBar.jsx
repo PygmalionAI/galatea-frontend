@@ -27,7 +27,7 @@ const LandingNavBar = () => {
   return (
     <nav
       className={twJoin(
-        "px-custom fixed top-0 z-20 flex w-full items-center justify-between py-5",
+        "px-custom sticky top-0 z-20 flex w-full items-center justify-between py-5",
         showNavBarBackground ? "backdrop-blur-3xl" : "bg-transparent",
       )}
     >
