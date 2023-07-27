@@ -29,8 +29,6 @@ const Info = () => {
 
   return (
     <main className="px-custom mx-auto flex min-h-screen w-full max-w-7xl flex-col items-center justify-center gap-20 py-16">
-      <div className="absolute -top-40 h-[20rem] w-[90vw] rounded-full bg-ga-purple-default/30 opacity-50 blur-[100rem] transition-all duration-1000 ease-in-out" />
-
       <img
         src={wave}
         alt="wave"

@@ -55,7 +55,7 @@ export function LandingSection(props) {
             }}
             whileInView={{
               duration: 1.5,
-              scale: 1.0,
+              scale: 0.9,
               rotateZ: -10,
             }}
             whileTap={{
@@ -72,7 +72,7 @@ export function LandingSection(props) {
             />
           </m.div>
 
-          <div className="absolute h-60 w-60 rounded-full md:bg-ga-blue/10 blur-3xl transition-all duration-1000 ease-in-out group-hover:scale-125 group-hover:blur-2xl" />
+          <div className="absolute h-60 w-60 rounded-full blur-3xl transition-all duration-1000 ease-in-out group-hover:scale-125 group-hover:blur-2xl md:bg-ga-blue/10" />
         </div>
       </m.div>
     </LazyMotion>
