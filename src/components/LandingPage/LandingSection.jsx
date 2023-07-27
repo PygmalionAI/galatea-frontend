@@ -1,38 +1,76 @@
+import { LazyMotion, domAnimation, m } from "framer-motion";
 import { twJoin } from "tailwind-merge";
 
 export function LandingSection(props) {
   return (
-    <div
-      className={twJoin(
-        "group flex items-center justify-between gap-2",
-        props.align == "left" ? "flex-row" : "flex-row-reverse",
-      )}
-    >
-      <section
-        className={twJoin(
-          "mx-auto flex max-w-5xl flex-col gap-4 transition-all hover:scale-110 md:gap-8",
-          props.align === "left" ? "items-start" : "items-end",
-        )}
+    <LazyMotion features={domAnimation}>
+      <m.div
+        initial={{ opacity: 0.3 }}
+        transition={{
+          duration: 1,
+          ease: "easeInOut",
+        }}
+        whileInView={{
+          opacity: 1,
+        }}
       >
-        <h1
+        <div
           className={twJoin(
-            "bg-gradient-to-r from-ga-white-default to-ga-blue bg-clip-text text-center text-2xl font-bold text-transparent md:text-5xl",
-            props.align == "left" ? "text-start" : "text-end",
+            "group flex flex-col items-center gap-4",
+            props.align == "left" ? "md:flex-row" : "md:flex-row-reverse",
           )}
         >
-          {props.title}
-        </h1>
-        <p
-          className={twJoin(
-            "text-sm font-medium text-ga-white-darker md:w-2/3 md:text-base",
-            props.align == "left" ? "text-start" : "text-end",
-          )}
-        >
-          {props.content}
-        </p>
-      </section>
+          <section
+            className={twJoin(
+              "mx-auto flex max-w-5xl flex-col gap-4 transition-all md:gap-8",
+              props.align === "left" ? "items-start" : "items-end",
+            )}
+          >
+            <h1
+              className={twJoin(
+                "overflow-visible bg-gradient-to-br from-ga-white-default via-ga-white-default to-ga-blue bg-clip-text text-center text-3xl font-bold text-transparent md:text-5xl",
+                props.align == "left" ? "text-start" : "text-end",
+              )}
+            >
+              {props.title}
+            </h1>
+            <p
+              className={twJoin(
+                "max-w-xl font-medium text-ga-white-darker md:text-lg",
+                props.align == "left" ? "text-start" : "text-end",
+              )}
+            >
+              {props.content}
+            </p>
+          </section>
 
-      <div className="absolute h-80 w-80 rounded-full bg-ga-blue/10 blur-3xl transition-all duration-1000 ease-in-out group-hover:scale-125 group-hover:blur-2xl" />
-    </div>
+          {/* flip horizontaly in place with smooth animation when it comes into view */}
+          <m.div
+            initial={{
+              scale: 0.85,
+            }}
+            transition={{
+              ease: "easeInOut",
+            }}
+            whileInView={{
+              duration: 1.5,
+              scale: 1.0,
+              rotatey: -10,
+              rotateZ: -10,
+            }}
+            whileTap={{
+              scale: 0.8,
+            }}
+          >
+            <img
+              src={props.imageLink}
+              className="mx-auto w-1/2 rounded-3xl p-8 sm:max-w-sm md:w-full md:p-12"
+            />
+          </m.div>
+
+          <div className="absolute h-60 w-60 rounded-full bg-ga-blue/10 blur-3xl transition-all duration-1000 ease-in-out group-hover:scale-125 group-hover:blur-2xl" />
+        </div>
+      </m.div>
+    </LazyMotion>
   );
 }
