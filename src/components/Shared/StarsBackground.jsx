@@ -17,7 +17,7 @@ const StarsBackground = () => {
   }, []);
 
   return (
-    <div className="absolute h-full w-full overflow-hidden">
+    <div className="absolute -z-10 h-full w-full overflow-hidden">
       <div className="star-container absolute inset-0 flex items-center justify-center"></div>
     </div>
   );
