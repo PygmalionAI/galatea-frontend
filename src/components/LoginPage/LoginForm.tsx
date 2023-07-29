@@ -2,7 +2,7 @@ import React, { useState, useEffect, FormEvent } from 'react';
 import { Eye, EyeOff } from 'lucide-react';
 import { TextInput, Button, Alert, AlertType } from '../Shared'; // Assuming the AlertType is an enum for different types of alerts.
 import { useNavigate } from 'react-router-dom';
-import { logIn, LoginResponse } from '../../apis/api';
+import { logIn } from '../../apis/api';
 
 enum Schema {
   Error = 'error',
