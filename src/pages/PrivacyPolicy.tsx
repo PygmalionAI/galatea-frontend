@@ -1,7 +1,7 @@
 import { useEffect } from "react";
-import { SimpleNavBar } from "../components";
 import { PrivacySection } from "../components/PrivacyPolicyPage/PrivacySection";
 import { Footer } from "../components/Shared/Footer";
+import { SimpleNavBar } from "../components/Shared/SimpleNavBar";
 import { StarsBackground } from "../components/Shared/StarsBackground";
 
 export const PrivacyPolicy = () => {

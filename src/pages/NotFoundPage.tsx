@@ -1,4 +1,5 @@
-import { NotFound, NotFoundNavBar } from "../components";
+import { NotFound } from "../components/NotFoundPage/NotFound";
+import { NotFoundNavBar } from "../components/NotFoundPage/NotFoundNavBar";
 import { StarsBackground } from "../components/Shared/StarsBackground";
 
 export const NotFoundPage = () => {

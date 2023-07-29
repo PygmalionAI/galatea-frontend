@@ -1,10 +1,10 @@
-import { RegisterForm } from "../components/RegisterPage/RegisterForm";
+import { LoginForm } from "../components/LoginPage/LoginForm";
 import { SimpleNavBar } from "../components/Shared/SimpleNavBar";
 
-export const Register = () => {
+export const Login = () => {
 	return (
 		<>
-			<div className="ga-black-lighter scrollbar-thin scrollbar-thumb-white/10 scrollbar-track-ga-purple/900 scrollbar flex h-screen flex-col">
+			<div className="scrollbar-thin scrollbar-thumb-white/10 scrollbar-track-ga-purple/900 scrollbar flex h-screen flex-col bg-ga-black-lighter">
 				<div>
 					<SimpleNavBar />
 				</div>
@@ -12,11 +12,11 @@ export const Register = () => {
 					<div className="my-4 border-b border-ga-gray-darker" />
 					<div className="w-full max-w-sm">
 						<h1 className="text-4xl">Welcome.</h1>
-						<p className="text-ga-white-default">
-							Please create your account below.
+						<p className="text-ga-white-darker">
+							Please log in to your account.
 						</p>
 						<div className="my-4 border-b border-ga-gray-darker" />
-						<RegisterForm />
+						<LoginForm />
 					</div>
 				</div>
 			</div>

@@ -1,4 +1,4 @@
-export default function TermSection(props: {
+export function TermSection(props: {
 	level: number;
 	content: string;
 	children?: React.ReactNode;

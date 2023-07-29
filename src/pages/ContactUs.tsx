@@ -1,7 +1,9 @@
 import { useState } from "react";
-import { Button, SimpleNavBar, TextInput } from "../components";
 import { Footer } from "../components/Shared/Footer";
 import { StarsBackground } from "../components/Shared/StarsBackground";
+import { SimpleNavBar } from "../components/Shared/SimpleNavBar";
+import { TextInput } from "../components/Shared/TextInput";
+import { Button } from "../components/Shared/Button";
 
 export const ContactUs = () => {
 	const [form, setForm] = useState({

@@ -1,17 +1,15 @@
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
-import {
-	Account,
-	Beta,
-	Characters,
-	Chat,
-	Landing,
-	Login,
-	NotFoundPage,
-	PrivacyPolicy,
-	Register,
-	ContactUs,
-	TermsOfService
-} from "./pages";
+import { Account } from "./pages/Account";
+import { Beta } from "./pages/Beta";
+import { Characters } from "./pages/Characters";
+import { Chat } from "./pages/Chat";
+import { ContactUs } from "./pages/ContactUs";
+import { Landing } from "./pages/Landing";
+import { Login } from "./pages/Login";
+import { NotFoundPage } from "./pages/NotFoundPage";
+import { PrivacyPolicy } from "./pages/PrivacyPolicy";
+import { Register } from "./pages/Register";
+import { TermsOfService } from "./pages/TermsOfService";
 
 const App = () => {
 	return (

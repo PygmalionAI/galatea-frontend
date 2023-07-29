@@ -1,7 +1,7 @@
-import { SimpleNavBar } from "../components";
 import { Footer } from "../components/Shared/Footer";
+import { SimpleNavBar } from "../components/Shared/SimpleNavBar";
 import { StarsBackground } from "../components/Shared/StarsBackground";
-import TermSection from "../components/TermsOfServicePage/TermSection";
+import { TermSection } from "../components/TermsOfServicePage/TermSection";
 
 export const TermsOfService = () => {
 	return (
@@ -136,5 +136,3 @@ export const TermsOfService = () => {
 		</div>
 	);
 };
-
-export default TermsOfService;

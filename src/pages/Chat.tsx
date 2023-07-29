@@ -1,9 +1,10 @@
-import { Header, InputBar } from "../components";
+import { Header } from "../components/ChatPage/Header";
+import InputBar from "../components/ChatPage/InputBar";
 import { Message } from "../components/ChatPage/Message";
 import { mockMessages } from "../components/ChatPage/mockMessage";
 import { NavBar } from "../components/Shared/NavBar";
 
-const Chat = () => {
+export const Chat = () => {
 	return (
 		<>
 			<div className="flex h-screen flex-col bg-ga-black-lighter">
@@ -26,5 +27,3 @@ const Chat = () => {
 		</>
 	);
 };
-
-export default Chat;

@@ -1,5 +1,4 @@
 import { ThumbsDown, ThumbsUp } from "lucide-react";
-import "./Message.css";
 
 /**An individual message.*/
 export const Message = (props: {

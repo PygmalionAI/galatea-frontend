@@ -1,4 +1,5 @@
-import { BetaInfo, BetaNavBar } from "../components";
+import { BetaInfo } from "../components/BetaPage/BetaInfo";
+import { BetaNavBar } from "../components/BetaPage/BetaNavBar";
 import { StarsBackground } from "../components/Shared/StarsBackground";
 
 export const Beta = () => {
