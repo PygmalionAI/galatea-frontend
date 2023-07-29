@@ -1,10 +1,10 @@
 import { Eye, EyeOff } from "lucide-react";
 import { FormEvent, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { logIn } from "../../apis/api";
-import { Alert } from "../Shared/Alert";
-import { Button } from "../Shared/Button";
-import { TextInput } from "../Shared/TextInput";
+import { logIn } from "../../../apis/api";
+import { Alert } from "../../../components/Alert";
+import { TextInput } from "../../../components/TextInput";
+import { Button } from "../../../components/Button";
 
 enum Schema {
 	Error = "error",

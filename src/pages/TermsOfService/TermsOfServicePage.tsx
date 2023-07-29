@@ -1,7 +1,7 @@
-import { Footer } from "../components/Shared/Footer";
-import { SimpleNavBar } from "../components/Shared/SimpleNavBar";
-import { StarsBackground } from "../components/Shared/StarsBackground";
-import { TermSection } from "../components/TermsOfServicePage/TermSection";
+import { Footer } from "../../components/Footer";
+import { SimpleNavBar } from "../../components/SimpleNavBar";
+import { StarsBackground } from "../../components/StarsBackground";
+import { TermSection } from "./components/TermSection";
 
 export const TermsOfService = () => {
 	return (

@@ -1,10 +1,10 @@
 import { Eye, EyeOff } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { signUp } from "../../apis/api";
-import { Alert } from "../Shared/Alert";
-import { Button } from "../Shared/Button";
-import { TextInput } from "../Shared/TextInput";
+import { signUp } from "../../../apis/api";
+import { Alert } from "../../../components/Alert";
+import { TextInput } from "../../../components/TextInput";
+import { Button } from "../../../components/Button";
 
 export const RegisterForm = () => {
 	const [isPasswordVisible, setPasswordVisible] = useState(false);

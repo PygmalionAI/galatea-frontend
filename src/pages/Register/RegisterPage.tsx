@@ -1,5 +1,5 @@
-import { RegisterForm } from "../components/RegisterPage/RegisterForm";
-import { SimpleNavBar } from "../components/Shared/SimpleNavBar";
+import { SimpleNavBar } from "../../components/SimpleNavBar";
+import { RegisterForm } from "./components/RegisterForm";
 
 export const Register = () => {
 	return (

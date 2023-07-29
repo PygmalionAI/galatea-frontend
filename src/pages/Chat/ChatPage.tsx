@@ -1,8 +1,8 @@
-import { Header } from "../components/ChatPage/Header";
-import InputBar from "../components/ChatPage/InputBar";
-import { Message } from "../components/ChatPage/Message";
-import { mockMessages } from "../components/ChatPage/mockMessage";
-import { NavBar } from "../components/Shared/NavBar";
+import { NavBar } from "../../components/NavBar";
+import { Header } from "./components/Header";
+import InputBar from "./components/InputBar";
+import { Message } from "./components/Message";
+import { mockMessages } from "./components/mockMessage";
 
 export const Chat = () => {
 	return (

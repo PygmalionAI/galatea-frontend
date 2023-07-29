@@ -1,4 +1,4 @@
-import { NavBar } from "../components/Shared/NavBar";
+import { NavBar } from "../../components/NavBar";
 
 export const Account = () => {
 	return <NavBar />;

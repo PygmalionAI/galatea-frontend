@@ -1,19 +1,19 @@
-import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
-import { Account } from "./pages/Account";
-import { Beta } from "./pages/Beta";
-import { Characters } from "./pages/Characters";
-import { Chat } from "./pages/Chat";
-import { ContactUs } from "./pages/ContactUs";
-import { Landing } from "./pages/Landing";
-import { Login } from "./pages/Login";
-import { NotFoundPage } from "./pages/NotFoundPage";
-import { PrivacyPolicy } from "./pages/PrivacyPolicy";
-import { Register } from "./pages/Register";
-import { TermsOfService } from "./pages/TermsOfService";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Account } from "./pages/Account/AccountPage";
+import { Beta } from "./pages/Beta/BetaPage";
+import { Characters } from "./pages/Characters/CharactersPage";
+import { Chat } from "./pages/Chat/ChatPage";
+import { ContactUs } from "./pages/ContactUs/ContactUsPage";
+import { Landing } from "./pages/Landing/LandingPage";
+import { Login } from "./pages/Login/LoginPage";
+import { NotFoundPage } from "./pages/NotFound/NotFoundPage";
+import { PrivacyPolicy } from "./pages/PrivacyPolicy/PrivacyPolicyPage";
+import { Register } from "./pages/Register/RegisterPage";
+import { TermsOfService } from "./pages/TermsOfService/TermsOfServicePage";
 
 const App = () => {
 	return (
-		<Router>
+		<BrowserRouter>
 			<Routes>
 				<Route path="*" element={<NotFoundPage />} />
 				<Route path="/" element={<Landing />} />
@@ -27,7 +27,7 @@ const App = () => {
 				<Route path="/contactus" element={<ContactUs />} />
 				<Route path="/terms" element={<TermsOfService />} />
 			</Routes>
-		</Router>
+		</BrowserRouter>
 	);
 };
 

@@ -1,14 +1,30 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { checkAuth } from "../../../apis/api";
+import { close, menu, pygchiselsvg } from "../../../assets";
 
-import { close, menu, pygchiselsvg } from "../../assets";
-
-export const NotFoundNavBar = () => {
+export const BetaNavBar = () => {
 	const [toggle, setToggle] = useState(false);
+	const [loggedIn, setLoggedIn] = useState(false);
+	const navigateTo = useNavigate();
 
-	const navigate = useNavigate();
-	const goBack = () => {
-		navigate(-1);
+	// On page load, check if the user is signed in
+	useEffect(() => {
+		checkAuth()
+			.then((res: any) => {
+				setLoggedIn(res);
+				if (!res) {
+					navigateTo("/login"); // Navigate to login page if not authenticated
+				}
+			})
+			.catch((err: any) => {
+				console.log(err);
+			});
+	}, []);
+
+	// Sign the user out when button is clicked
+	const logOut = () => {
+		// TODO reimplement this
 	};
 
 	return (
@@ -70,14 +86,11 @@ export const NotFoundNavBar = () => {
 				</ul>
 			</div>
 			<div className="hidden md:flex">
-				<button
-					className="pink-gradient-background scale-10 mr-3 h-10 rounded-full px-5 text-ga-white-default"
-					onClick={goBack}
-				>
-					Go Back
+				<button className="pink-gradient-background scale-10 mr-3 h-10 rounded-full px-5 text-ga-white-default">
+					<Link to="/account">Account</Link>
 				</button>
-				<button className="text-ga-white-default" onClick={goBack}>
-					Home
+				<button onClick={logOut} className="text-ga-white-default">
+					Log Out
 				</button>
 			</div>
 			<div className="flex flex-1 items-center justify-end md:hidden">
@@ -130,8 +143,11 @@ export const NotFoundNavBar = () => {
 							</a>
 						</li>
 						<li>
-							<a href="#" onClick={goBack} className="cursor-pointer">
-								Go Back
+							<a href="/account">Account</a>
+						</li>
+						<li>
+							<a onClick={logOut} className="cursor-pointer">
+								Log Out
 							</a>
 						</li>
 					</ul>

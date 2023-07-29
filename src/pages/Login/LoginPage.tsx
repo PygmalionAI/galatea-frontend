@@ -1,5 +1,5 @@
-import { LoginForm } from "../components/LoginPage/LoginForm";
-import { SimpleNavBar } from "../components/Shared/SimpleNavBar";
+import { SimpleNavBar } from "../../components/SimpleNavBar";
+import { LoginForm } from "./components/LoginForm";
 
 export const Login = () => {
 	return (

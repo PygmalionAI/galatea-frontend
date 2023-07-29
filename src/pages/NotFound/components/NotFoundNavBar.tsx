@@ -1,30 +1,14 @@
-import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { checkAuth } from "../../apis/api";
-import { close, menu, pygchiselsvg } from "../../assets";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-export const BetaNavBar = () => {
+import { close, menu, pygchiselsvg } from "../../../assets";
+
+export const NotFoundNavBar = () => {
 	const [toggle, setToggle] = useState(false);
-	const [loggedIn, setLoggedIn] = useState(false);
-	const navigateTo = useNavigate();
 
-	// On page load, check if the user is signed in
-	useEffect(() => {
-		checkAuth()
-			.then((res: any) => {
-				setLoggedIn(res);
-				if (!res) {
-					navigateTo("/login"); // Navigate to login page if not authenticated
-				}
-			})
-			.catch((err: any) => {
-				console.log(err);
-			});
-	}, []);
-
-	// Sign the user out when button is clicked
-	const logOut = () => {
-		// TODO reimplement this
+	const navigate = useNavigate();
+	const goBack = () => {
+		navigate(-1);
 	};
 
 	return (
@@ -86,11 +70,14 @@ export const BetaNavBar = () => {
 				</ul>
 			</div>
 			<div className="hidden md:flex">
-				<button className="pink-gradient-background scale-10 mr-3 h-10 rounded-full px-5 text-ga-white-default">
-					<Link to="/account">Account</Link>
+				<button
+					className="pink-gradient-background scale-10 mr-3 h-10 rounded-full px-5 text-ga-white-default"
+					onClick={goBack}
+				>
+					Go Back
 				</button>
-				<button onClick={logOut} className="text-ga-white-default">
-					Log Out
+				<button className="text-ga-white-default" onClick={goBack}>
+					Home
 				</button>
 			</div>
 			<div className="flex flex-1 items-center justify-end md:hidden">
@@ -143,11 +130,8 @@ export const BetaNavBar = () => {
 							</a>
 						</li>
 						<li>
-							<a href="/account">Account</a>
-						</li>
-						<li>
-							<a onClick={logOut} className="cursor-pointer">
-								Log Out
+							<a href="#" onClick={goBack} className="cursor-pointer">
+								Go Back
 							</a>
 						</li>
 					</ul>

@@ -1,8 +1,8 @@
 import { useEffect } from "react";
-import { PrivacySection } from "../components/PrivacyPolicyPage/PrivacySection";
-import { Footer } from "../components/Shared/Footer";
-import { SimpleNavBar } from "../components/Shared/SimpleNavBar";
-import { StarsBackground } from "../components/Shared/StarsBackground";
+import { Footer } from "../../components/Footer";
+import { SimpleNavBar } from "../../components/SimpleNavBar";
+import { StarsBackground } from "../../components/StarsBackground";
+import { PrivacySection } from "./components/PrivacySection";
 
 export const PrivacyPolicy = () => {
 	// remove overflow hidden from body
