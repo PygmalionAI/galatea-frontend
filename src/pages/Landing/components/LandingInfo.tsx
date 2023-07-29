@@ -1,13 +1,7 @@
 import { ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "../../../components/Button";
-import community from "../../assets/landing/community.svg";
-import cpu from "../../assets/landing/cpu.svg";
-import goal from "../../assets/landing/goal.svg";
-import group from "../../assets/landing/group.svg";
-import integrate from "../../assets/landing/integrate.svg";
-import vision from "../../assets/landing/vision.svg";
-import wave from "../../assets/wave.svg";
+import {wave, group, goal, cpu, integrate,vision, community } from "../../../assets";
 import { LandingSection } from "./LandingSection";
 
 export const LandingInfo = () => {
