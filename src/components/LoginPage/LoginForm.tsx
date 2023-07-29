@@ -23,7 +23,7 @@ interface ApiError {
   };
 }
 
-const LoginForm: React.FC<LoginFormProps> = (props) => {
+export const LoginForm = (props:LoginFormProps) => {
   const [isPasswordVisible, setPasswordVisible] = useState<boolean>(false);
   const [errorMessage, setErrorMessage] = useState<string>('');
   const [successMessage, setSuccessMessage] = useState<string>('');
