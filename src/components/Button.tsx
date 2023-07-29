@@ -5,6 +5,7 @@ export const Button = (props: {
 	type: "button" | "submit";
 	disabled?: boolean;
 	children: React.ReactNode;
+	classes?: string;
 }) => (
 	<button
 		type={props.type}
@@ -15,6 +16,7 @@ export const Button = (props: {
 				"bg-ga-purple-darker enabled:hover:bg-ga-purple-default enabled:active:bg-ga-purple-lighter disabled:cursor-not-allowed disabled:bg-ga-purple-darkest disabled:text-ga-gray-lighter",
 			props.schema == "secondary" &&
 				"bg-ga-gray-default hover:bg-ga-gray-lighter active:bg-ga-gray-lightest",
+			props.classes,
 		)}
 		disabled={props.disabled}
 	>

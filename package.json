@@ -16,11 +16,13 @@
 		"cors": "^2.8.5",
 		"express": "^4.18.2",
 		"firebase": "^10.1.0",
+		"framer-motion": "^10.15.0",
 		"lucide-react": "^0.263.1",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",
 		"react-router-dom": "^6.14.2",
 		"tailwind-merge": "^1.14.0",
+		"tailwindcss-animated": "^1.0.1",
 		"ts-dotenv": "^0.9.1"
 	},
 	"devDependencies": {
