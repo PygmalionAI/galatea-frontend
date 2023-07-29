@@ -1,6 +1,6 @@
 import React, { useState, useEffect, FormEvent } from 'react';
 import { Eye, EyeOff } from 'lucide-react';
-import { TextInput, Button, Alert, AlertType } from '../Shared'; // Assuming the AlertType is an enum for different types of alerts.
+import { TextInput, Button, Alert } from '../Shared';
 import { useNavigate } from 'react-router-dom';
 import { logIn } from '../../apis/api';
 
@@ -45,7 +45,7 @@ const LoginForm: React.FC<LoginFormProps> = (props) => {
     const password = evt.currentTarget.password.value;
 
     try {
-      const loginResponse: LoginResponse = await logIn(email, password);
+      const login = await logIn(email, password);
       setSignedIn(true);
       setSuccessMessage('You have been logged in successfully. You will be redirected shortly.');
     } catch (error) {
@@ -83,12 +83,12 @@ const LoginForm: React.FC<LoginFormProps> = (props) => {
         Log In
       </Button>
       {errorMessage && (
-        <Alert schema={Schema.Error as AlertType} title="Failed to Log In.">
+        <Alert schema={Schema.Error} title="Failed to Log In.">
           {errorMessage}
         </Alert>
       )}
       {successMessage && (
-        <Alert schema={Schema.Success as AlertType} title="Logged In">
+        <Alert schema={Schema.Success} title="Logged In">
           {successMessage}
         </Alert>
       )}
