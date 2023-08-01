@@ -5,7 +5,7 @@ import { close, menu, pygchiselsvg } from "../../../assets";
 
 export const BetaNavBar = () => {
 	const [toggle, setToggle] = useState(false);
-	const [loggedIn, setLoggedIn] = useState(false);
+	const [_, setLoggedIn] = useState(false);
 	const navigateTo = useNavigate();
 
 	// On page load, check if the user is signed in
