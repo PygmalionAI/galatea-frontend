@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package galatea.v1;
+
+option go_package = "shared/go/pb/galatea/v1;galateav1";
+message UserRecord {
+  string id = 1;
+    string email = 2;
+  }
+message UserRequest {
+  string id = 1;
+}
+message UserResponse {
+  UserRecord user = 1;
+}
+service AuthService {
+  rpc User(UserRequest) returns (UserResponse) {
+    option idempotency_level = NO_SIDE_EFFECTS;
+  }
+}

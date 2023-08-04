@@ -1,0 +1,31 @@
+version: "3.9"
+services:
+  minio:
+    volumes:
+      - minio_data:/var/lib/minio/data
+  gotrue:
+  galatea_server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    depends_on:
+      - postgres
+    ports:
+      - "8080:8080"
+    volumes:
+      - galatea_data:/go/src/github.com/supabase/gotrue
+    command: galatea_server
+  postgres:
+    container_name: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_DB=postgres
+volumes:
+  postgres_data:
+  galatea_data:
+  minio_data:
