@@ -2,29 +2,25 @@ package db
 
 import (
 	"context"
+	"database/sql"
 	"fmt"
-	"galatea_server/common/log"
+	"galatea_server/log"
 
-	"github.com/georgysavva/scany/v2/pgxscan"
-	"github.com/jackc/pgx/v5"
+	"github.com/georgysavva/scany/v2/sqlscan"
 )
 
 type DB struct {
-	*pgx.Conn
+	*sql.DB
 }
 
 var Conn *DB
 
 // New db connection. Run only once.
-func New(dsnURI string) (*DB, error) {
+func New(conn *sql.DB) (*DB, error) {
 	log.L.Info().Msg("connecting to  db")
 	ctx := context.Background()
-	conn, err := pgx.Connect(ctx, dsnURI)
-	if err != nil {
-		return nil, fmt.Errorf("unable to connect to database: %w", err)
-	}
 	var test int
-	err = pgxscan.Get(ctx, conn, &test, `SELECT 1`)
+	err := sqlscan.Get(ctx, conn, &test, `SELECT 1`)
 	if err != nil {
 		return nil, fmt.Errorf("unable to connect to database: %w", err)
 	}
@@ -35,7 +31,7 @@ func New(dsnURI string) (*DB, error) {
 
 // Close closes the database connection.
 func (db *DB) Close() {
-	if db.Conn != nil {
-		db.Conn.Close(context.Background())
+	if db.DB != nil {
+		db.DB.Close()
 	}
 }

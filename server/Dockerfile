@@ -10,7 +10,7 @@ ADD . ./
 RUN go mod download
 RUN rm -rf ./dist
 RUN mkdir ./dist
-RUN go build -o ./dist/galatea_server ./server/server/main.go
+RUN go build -o ./dist/galatea_server ./cmd/main.go
 
 ## Deploy
 

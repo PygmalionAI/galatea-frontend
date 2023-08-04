@@ -5,18 +5,19 @@ import (
 	"embed"
 	"errors"
 	"fmt"
-	"galatea_server/common/log"
+	"galatea_server/log"
 
 	"github.com/golang-migrate/migrate/v4"
-	"github.com/golang-migrate/migrate/v4/database/postgres"
+	pgxmigrate "github.com/golang-migrate/migrate/v4/database/pgx/v5"
+	_ "github.com/golang-migrate/migrate/v4/source/file"
 	"github.com/golang-migrate/migrate/v4/source/iofs"
 )
 
 //go:embed migrations/*
-var MigrationsFS embed.FS
+var fs embed.FS
 
-func Migrate(conn *sql.DB, fs embed.FS, drop bool) error {
-	driver, err := postgres.WithInstance(conn, &postgres.Config{})
+func Migrate(conn *sql.DB, drop bool) error {
+	driver, err := pgxmigrate.WithInstance(conn, &pgxmigrate.Config{})
 	if err != nil {
 		return fmt.Errorf("db instance: %w", err)
 	}
@@ -29,7 +30,7 @@ func Migrate(conn *sql.DB, fs embed.FS, drop bool) error {
 	if err != nil {
 		return fmt.Errorf("new iofs: %w", err)
 	}
-	m, err := migrate.NewWithInstance("iofs", d, "postgres", driver)
+	m, err := migrate.NewWithInstance("iofs", d, "pgx", driver)
 	if err != nil {
 		return fmt.Errorf("new migrate instance: %w", err)
 	}

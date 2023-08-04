@@ -1,31 +1,75 @@
 version: "3.9"
 services:
+  mailhog:
+    image: mailhog/mailhog:v1.0.1
+    ports:
+      - "1025:1025"
+      - "8025:8025"
   minio:
+    image: minio/minio:RELEASE.2023-04-20T17-56-55Z.hotfix.3478ff085
+    environment:
+      - MINIO_ADDRESS=:9000
+      - MINIO_CONSOLE_ADDRESS=:9001
+      - MINIO_ACCESS_KEY=galatea
+      - MINIO_SECRET_KEY=devdevdev
+    ports:
+      - "9000:9000"
+      - "9001:9001"
     volumes:
-      - minio_data:/var/lib/minio/data
+      - ./data/minio:/var/lib/minio/data
+    command: server /var/lib/minio/data
   gotrue:
+    restart: on-failure
+    image: supabase/gotrue:v2.91.0
+    ports:
+      - "8081:8081"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      - API_EXTERNAL_URL=http://localhost:8081
+      - DATABASE_URL=postgres://supabase_auth_admin:devdev@postgres:5432/galatea
+      - DB_NAMESPACE=auth
+      - GOTRUE_API_HOST=0.0.0.0
+      - GOTRUE_DB_DRIVER=postgres
+      - GOTRUE_JWT_SECRET=CHANGEME
+      - GOTRUE_SITE_URL=http://localhost:5173
+      - GOTRUE_SMTP_ADMIN_EMAIL=admin@pygmalion.chat
+      - GOTRUE_SMTP_HOST=mailhog
+      - GOTRUE_SMTP_PORT=1025
+      - GOTRUE_SMTP_SENDER_NAME=Pygmalion Team
   galatea_server:
+    restart: on-failure
     build:
       context: ./server
       dockerfile: Dockerfile
     depends_on:
-      - postgres
+      postgres:
+        condition: service_healthy
+      minio:
+        condition: service_started
+      mailhog:
+        condition: service_started
     ports:
       - "8080:8080"
-    volumes:
-      - galatea_data:/go/src/github.com/supabase/gotrue
     command: galatea_server
+    environment:
+      - ADDR=:8080
+      - DATABASE_URL=postgres://galatea:devdev@postgres:5432/galatea
   postgres:
     container_name: postgres
+    image: postgres:15.3-bullseye
     ports:
       - "5432:5432"
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - ./data/postgres/data:/var/lib/postgresql/data
+      - ./init_gotrue.sh:/docker-entrypoint-initdb.d/init_gotrue.sql
     environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=root
-      - POSTGRES_DB=postgres
-volumes:
-  postgres_data:
-  galatea_data:
-  minio_data:
+      - POSTGRES_USER=galatea
+      - POSTGRES_PASSWORD=devdev
+      - POSTGRES_DB=galatea
+    healthcheck:
+      test: ["CMD", "pg_isready", "-q", "-d", "postgres", "-U", "galatea"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
