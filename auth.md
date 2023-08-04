@@ -1,5 +1,16 @@
 # Authentication Flow
 
+Run the services
+
+- minio
+- gotrue (supabase)
+- galatea-server
+- postgres
+
+```
+docker compose up -d --build
+```
+
 Sign up on the Gotrue server.
 
 ```js
