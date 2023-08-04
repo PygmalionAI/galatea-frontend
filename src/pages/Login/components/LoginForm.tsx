@@ -25,7 +25,7 @@ interface ApiError {
 	};
 }
 
-export const LoginForm = (props: LoginFormProps) => {
+export const LoginForm = (_: LoginFormProps) => {
 	const [isPasswordVisible, setPasswordVisible] = useState<boolean>(false);
 	const [errorMessage, setErrorMessage] = useState<string>("");
 	const [successMessage, setSuccessMessage] = useState<string>("");
@@ -52,13 +52,14 @@ export const LoginForm = (props: LoginFormProps) => {
 			setSuccessMessage(
 				"You have been logged in successfully. You will be redirected shortly.",
 			);
+			console.log(login);
 		} catch (error) {
 			// Get error from api
 			const loginError =
 				((error as ApiError).response?.data?.error as String) ||
 				"Unknown error";
 			setSignedIn(false);
-			console.log(`There was an error while logging in: ${error}`);
+			console.log(`There was an error while logging in: ${loginError}`);
 			setErrorMessage("Please make sure your credentials are correct.");
 		}
 	};
