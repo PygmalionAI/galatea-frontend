@@ -1,0 +1,14 @@
+version: v1
+plugins:
+  - name: go
+    out: go/pb
+    opt: paths=source_relative
+  - name: connect-go
+    out: go/connect
+    opt: paths=source_relative
+  - plugin: es
+    out: ts/connect
+    opt: target=ts
+  - plugin: connect-web
+    out: ts/connect
+    opt: target=ts

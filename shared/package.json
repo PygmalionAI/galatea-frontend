@@ -1,0 +1,19 @@
+{
+  "name": "galatea-shared",
+  "version": "0.0.1",
+  "description": "Shared types for communication between server and frontend",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "buf:generate": "buf generate"
+  },
+  "devDependencies": {
+    "@bufbuild/protoc-gen-connect-web": "^0.7.0",
+    "@bufbuild/protoc-gen-es": "^1.2.0"
+  },
+  "dependencies": {
+    "@bufbuild/connect-web": "^0.7.0",
+    "@bufbuild/protobuf": "^1.2.1",
+    "ts-node": "^10.9.1"
+  }
+}
