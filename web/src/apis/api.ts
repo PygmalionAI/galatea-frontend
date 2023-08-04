@@ -13,7 +13,7 @@ interface AuthStatusResponse {
 }
 
 const currentURL = `${window.location.protocol}//${window.location.host}`;
-const apiURL = `${currentURL}/v1`;
+// const apiURL = `${currentURL}/v1`;
 const tsAPI = `${currentURL}/api`;
 
 // Sign up the user with firebase
