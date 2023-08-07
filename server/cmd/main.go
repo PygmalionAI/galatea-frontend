@@ -13,6 +13,8 @@ import (
 
 	"github.com/rs/zerolog"
 	"github.com/urfave/cli/v2"
+	"golang.org/x/net/http2"
+	"golang.org/x/net/http2/h2c"
 )
 
 func main() {
@@ -31,6 +33,7 @@ func main() {
 			&cli.StringFlag{Name: "database_url", Usage: "Database DSN", EnvVars: []string{"DATABASE_URL"}, Value: "postgres://galatea:devdev@localhost:5432/galatea?sslmode=disable"},
 			&cli.StringFlag{Name: "addr", Usage: "Host addr", EnvVars: []string{"ADDR"}, Value: ":8080"},
 			&cli.BoolFlag{Name: "drop", Usage: "Drop database", EnvVars: []string{"DROP"}, Value: false},
+			&cli.StringFlag{Name: "gotrue_url", Usage: "Auth server URL", EnvVars: []string{"GOTRUE_URL"}, Value: "gotrue:8081"},
 			&cli.StringFlag{Name: "jwt_secret", Usage: "Shared secret with gotrue", EnvVars: []string{"JWT_SECRET"}, Value: "CHANGEME"},
 		},
 		Action: run,
@@ -66,10 +69,19 @@ func run(ctx *cli.Context) error {
 
 	// Setup routes
 	jwtsecret := ctx.String("jwt_secret")
-	r := handlers.New(dbConn, jwtsecret)
+	gotrueURL := ctx.String("gotrue_url")
+	r := handlers.New(dbConn, jwtsecret, gotrueURL)
 	addr := ctx.String("addr")
 	log.L.Info().Str("addr", addr).Msg("listening")
-	err = http.ListenAndServe(addr, r)
+
+	server := &http.Server{
+		Addr:         addr,
+		ReadTimeout:  5 * time.Second,
+		WriteTimeout: 5 * time.Second,
+		Handler:      h2c.NewHandler(r, &http2.Server{}),
+	}
+
+	err = server.ListenAndServe()
 	if err != nil {
 		return fmt.Errorf("listen and serve: %w", err)
 	}

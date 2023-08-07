@@ -3,18 +3,52 @@ syntax = "proto3";
 package galatea.v1;
 
 option go_package = "shared/go/pb/galatea/v1;galateav1";
-message UserRecord {
-  string id = 1;
-    string email = 2;
-  }
-message UserRequest {
-  string id = 1;
+
+message SignInRequest {
+  string email = 1;
+  string password = 2;
 }
-message UserResponse {
-  UserRecord user = 1;
+message SignInResponse {
+  string access_token = 1;
+  string token_type = 2;
+  int32 expires_in = 3;
+  int32 expires_at = 4;
+  string refresh_token = 5;
 }
+message SignUpRequest {
+  string email = 1;
+  string password = 2;
+}
+message SignUpResponse {
+  string id = 1;
+  string email = 2;
+  string confirmation_sent_at = 3;
+}
+message VerifyRequest {
+  string type = 1;
+  string email = 2;
+  string token = 3;
+}
+
+message VerifyResponse {
+  string access_token = 1;
+  string token_type = 2;
+  int32 expires_in = 3;
+  int32 expires_at = 4;
+  string refresh_token = 5;
+}
+message CheckRequest {}
+message CheckResponse {
+  string user_id = 1;
+  string email = 2;
+  string session_id = 3;
+}
+
 service AuthService {
-  rpc User(UserRequest) returns (UserResponse) {
+  rpc SignIn(SignInRequest) returns (SignInResponse);
+  rpc SignUp(SignUpRequest) returns (SignUpResponse);
+  rpc Verify(VerifyRequest) returns (VerifyResponse);
+  rpc Check(CheckRequest) returns (CheckResponse) {
     option idempotency_level = NO_SIDE_EFFECTS;
   }
 }
