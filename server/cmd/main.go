@@ -42,11 +42,12 @@ func main() {
 			&cli.StringFlag{Category: "Authentication", Name: "jwt_secret", Usage: "Shared secret with gotrue", EnvVars: []string{"JWT_SECRET"}, Value: "CHANGEME"},
 
 			&cli.StringFlag{Category: "Storage:", Name: "storage_bucket", Usage: "Bucket name to store images", EnvVars: []string{"STORAGE_BUCKET"}, Value: "images"},
-			&cli.StringFlag{Category: "Storage:", Name: "storage_mode", Value: "console", EnvVars: []string{"STORAGE_MODE"}, Usage: "Storage mode (local, console, s3)"},
+			&cli.StringFlag{Category: "Storage:", Name: "storage_mode", Value: "s3", EnvVars: []string{"STORAGE_MODE"}, Usage: "Storage mode (local, console, s3)"},
 			&cli.StringFlag{Category: "Storage:", Name: "storage_base_dir", Value: "./data", EnvVars: []string{"STORAGE_BASE_DIR"}, Usage: "Base dir for local storage"},
-			&cli.StringFlag{Category: "Storage:", Name: "storage_s3_url", Value: "s3.pyg.jtmn.dev", EnvVars: []string{"STORAGE_S3_URL"}, Usage: "Endpoint for object storage"},
-			&cli.StringFlag{Category: "Storage:", Name: "storage_s3_key", Value: "SAMPLE", EnvVars: []string{"STORAGE_S3_KEY"}, Usage: "Key for object storage"},
-			&cli.StringFlag{Category: "Storage:", Name: "storage_s3_secret", Value: "SAMPLE", EnvVars: []string{"STORAGE_S3_SECRET"}, Usage: "Secret for object storage"},
+			&cli.BoolFlag{Category: "Storage:", Name: "storage_s3_use_ssl", Value: false, EnvVars: []string{"STORAGE_S3_USE_SSL"}, Usage: "Use SSL for object storage"},
+			&cli.StringFlag{Category: "Storage:", Name: "storage_s3_url", Value: "minio:9000", EnvVars: []string{"STORAGE_S3_URL"}, Usage: "Endpoint for object storage"},
+			&cli.StringFlag{Category: "Storage:", Name: "storage_s3_key", Value: "galatea", EnvVars: []string{"STORAGE_S3_KEY"}, Usage: "Key for object storage"},
+			&cli.StringFlag{Category: "Storage:", Name: "storage_s3_secret", Value: "devdevdev", EnvVars: []string{"STORAGE_S3_SECRET"}, Usage: "Secret for object storage"},
 		},
 		Action: run,
 	}
@@ -81,19 +82,19 @@ func run(ctx *cli.Context) error {
 
 	// Connect to object storage
 	var st storage.Storer
-	switch ctx.String("storage_mode") {
+	storageMode := ctx.String("storage_mode")
+	log.L.Info().Str("mode", storageMode).Msg("Setting up storage")
+	switch storageMode {
 	case "local":
-		log.L.Info().Msg("Using local storage")
 		st = &storage.File{
 			BaseDir: ctx.String("storage_base_dir"),
 		}
 	case "s3":
-		log.L.Info().Msg("Using s3 storage")
 		storageConn, err := minio.New(
 			ctx.String("storage_s3_url"),
 			&minio.Options{
 				Creds:  credentials.NewStaticV4(ctx.String("storage_s3_key"), ctx.String("storage_s3_secret"), ""),
-				Secure: true,
+				Secure: ctx.Bool("storage_s3_use_ssl"),
 			})
 		if err != nil {
 			return fmt.Errorf("new minio: %w", err)
@@ -101,7 +102,6 @@ func run(ctx *cli.Context) error {
 
 		st = &storage.S3{Client: storageConn}
 	default:
-		log.L.Info().Msg("Using no storage (console)")
 		st = &storage.Console{}
 	}
 
