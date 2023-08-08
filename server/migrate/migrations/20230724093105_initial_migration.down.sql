@@ -5,3 +5,4 @@ DROP TABLE branches;
 DROP TABLE messages;
 DROP TABLE reports;
 DROP TABLE bot_ratings;
+DROP ENUM chat_user;
