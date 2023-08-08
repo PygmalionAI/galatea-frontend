@@ -6,6 +6,7 @@ import (
 	"galatea_server/auth"
 	"galatea_server/db"
 	"galatea_server/log"
+	"galatea_server/storage"
 	"io"
 	"net/http"
 	"shared/go/connect/galatea/v1/galateav1connect"
@@ -42,17 +43,19 @@ func WithError(next func(w http.ResponseWriter, r *http.Request) (int, error)) f
 	}
 	return fn
 }
-func New(dbConn *db.DB, jwtsecret string, gotrueURL string) chi.Router {
+func New(dbConn *db.DB, jwtsecret string, gotrueURL string, imageBucketName string, storer storage.Storer) chi.Router {
 	jwtauth := auth.New(jwtsecret)
 	log.L.Info().Msg("Prepare routes")
 	interceptors := connect.WithInterceptors(WithUserClaims(jwtauth))
 	authPath, authHandler := galateav1connect.NewAuthServiceHandler(&Auth{jwtauth, gotrueURL}, interceptors)
+	blobPath, blobHandler := galateav1connect.NewImageUploadServiceHandler(&Blob{imageBucketName, storer}, interceptors)
 	r := chi.NewRouter()
 	r.Use(middleware.RequestID)
 	r.Use(middleware.RealIP)
 	r.Use(middleware.Recoverer)
 	r.Use(middleware.Logger)
 	r.Mount(authPath, authHandler)
+	r.Mount(blobPath, blobHandler)
 	r.Get("/api/health", func(w http.ResponseWriter, r *http.Request) {
 		w.Write([]byte("OK"))
 	})
