@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package galatea.v1;
+
+option go_package = "shared/go/pb/galatea/v1;galateav1";
+
+message ImageUploadRequest {
+  bytes image = 1;
+}
+message ImageUploadResponse {
+  string url = 1;
+}
+
+service ImageUploadService {
+  rpc ImageUpload(ImageUploadRequest) returns (ImageUploadResponse);
+}
