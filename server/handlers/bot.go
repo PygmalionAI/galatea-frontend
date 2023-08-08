@@ -8,7 +8,7 @@ import (
 	galateav1 "shared/go/pb/galatea/v1"
 
 	connect "github.com/bufbuild/connect-go"
-	"github.com/go-jet/jet/postgres"
+	"github.com/go-jet/jet/v2/postgres"
 )
 
 type Bot struct {
