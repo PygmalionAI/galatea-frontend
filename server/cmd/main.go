@@ -74,8 +74,13 @@ func run(ctx *cli.Context) error {
 	}
 	defer dbConn.Close()
 
-	drop := ctx.Bool("drop")
-	err = migrate.Migrate(conn, drop)
+	if ctx.Bool("drop") {
+		err = migrate.Drop(conn)
+		if err != nil {
+			return fmt.Errorf("drop: %w", err)
+		}
+	}
+	err = migrate.Migrate(conn)
 	if err != nil {
 		return fmt.Errorf("migrate: %w", err)
 	}

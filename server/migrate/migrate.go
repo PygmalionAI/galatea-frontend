@@ -16,16 +16,12 @@ import (
 //go:embed migrations/*
 var fs embed.FS
 
-func Migrate(conn *sql.DB, drop bool) error {
+func Drop(conn *sql.DB) error {
 	driver, err := pgxmigrate.WithInstance(conn, &pgxmigrate.Config{})
 	if err != nil {
 		return fmt.Errorf("db instance: %w", err)
 	}
-	dir, err := fs.ReadDir(".")
-	if err != nil {
-		return fmt.Errorf("read dir: %w", err)
-	}
-	fmt.Println(dir[0].Name())
+
 	d, err := iofs.New(fs, "migrations")
 	if err != nil {
 		return fmt.Errorf("new iofs: %w", err)
@@ -34,8 +30,24 @@ func Migrate(conn *sql.DB, drop bool) error {
 	if err != nil {
 		return fmt.Errorf("new migrate instance: %w", err)
 	}
-	if drop {
-		return m.Drop()
+	log.L.Info().Msg("dropping database")
+	return m.Drop()
+
+}
+
+func Migrate(conn *sql.DB) error {
+	driver, err := pgxmigrate.WithInstance(conn, &pgxmigrate.Config{})
+	if err != nil {
+		return fmt.Errorf("db instance: %w", err)
+	}
+
+	d, err := iofs.New(fs, "migrations")
+	if err != nil {
+		return fmt.Errorf("new iofs: %w", err)
+	}
+	m, err := migrate.NewWithInstance("iofs", d, "pgx", driver)
+	if err != nil {
+		return fmt.Errorf("new migrate instance: %w", err)
 	}
 
 	log.L.Info().Msg("migrating database (if any)")

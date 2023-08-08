@@ -1,0 +1,43 @@
+syntax = "proto3";
+
+package galatea.v1;
+
+option go_package = "shared/go/pb/galatea/v1;galateav1";
+
+message Bot {
+  string id = 1;
+  string name = 2;
+  string description = 3;
+  string avatar_url = 4;
+}
+message BotAllRequest {}
+message BotAllResponse {
+  repeated Bot bots = 1;
+}
+message BotCreateRequest {
+  string id = 1;
+  Bot bot = 2;
+}
+message BotCreateResponse {
+  Bot bot = 1;
+}
+message BotUpdateRequest {
+  string id = 1;
+  Bot bot = 2;
+}
+message BotUpdateResponse {
+  Bot bot = 1;
+}
+message BotDeleteRequest {
+  string id = 1;
+}
+message BotDeleteResponse {
+  Bot bot = 2;
+}
+
+service BotService {
+  rpc BotAll(BotAllRequest) returns (BotAllResponse);
+  rpc BotCreate(BotCreateRequest) returns (BotCreateResponse);
+  rpc BotUpdate(BotUpdateRequest) returns (BotUpdateResponse);
+  rpc BotDelete(BotDeleteRequest) returns (BotDeleteResponse);
+}

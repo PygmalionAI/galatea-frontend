@@ -3,6 +3,7 @@ package handlers
 import (
 	"bytes"
 	"encoding/json"
+	"errors"
 	"galatea_server/auth"
 	"galatea_server/db"
 	"galatea_server/log"
@@ -16,6 +17,8 @@ import (
 	"github.com/go-chi/chi/v4"
 	"github.com/go-chi/chi/v4/middleware"
 )
+
+var ErrNotImplemented = errors.New("not implemented")
 
 // ErrorObject is used by the front end react-fetching-library
 type ErrorObject struct {

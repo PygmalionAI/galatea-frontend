@@ -1,0 +1,72 @@
+syntax = "proto3";
+
+package galatea.v1;
+
+option go_package = "shared/go/pb/galatea/v1;galateav1";
+
+enum SenderType {
+  SENDER_TYPE_UNSPECIFIED = 0;
+  SENDER_TYPE_USER = 1;
+  SENDER_TYPE_BOT = 2;
+}
+
+message ChatMessage {
+  string id = 1;
+  SenderType sender = 2;
+  string message = 3;
+  int64 created_at = 4;
+}
+
+message Chat {
+  string id = 1;
+  string user_id = 2;
+  string bot_id = 3;
+  repeated ChatMessage messages = 4;
+}
+
+message ChatAllRequest {}
+message ChatAllResponse {
+  repeated Chat chats = 1;
+}
+message ChatGetRequest {
+  string id = 1;
+}
+message ChatGetResponse {
+  Chat chat = 1;
+}
+message ChatCreateRequest {
+  string bot_id = 1;
+}
+message ChatCreateResponse {
+  Chat chat = 1;
+}
+message ChatDeleteRequest {
+  string id = 1;
+}
+message ChatDeleteResponse {
+  Chat chat = 1;
+}
+message ChatSubscribeRequest {
+  string id = 1;
+}
+message ChatSubscribeResponse {
+  string id = 1;
+  SenderType sender = 2;
+  string message = 3;
+}
+message ChatSendMessageRequest {
+  string chat_id = 1;
+  string message = 2;
+}
+message ChatSendMessageResponse {
+  ChatMessage message = 1;
+}
+
+service ChatService {
+  rpc ChatAll(ChatAllRequest) returns (ChatAllResponse);
+  rpc ChatGet(ChatGetRequest) returns (ChatGetResponse);
+  rpc ChatCreate(ChatCreateRequest) returns (ChatCreateResponse);
+  rpc ChatDelete(ChatDeleteRequest) returns (ChatDeleteResponse);
+  rpc ChatSendMessage(ChatSendMessageRequest) returns (ChatSendMessageResponse);
+  rpc ChatSubscribe(ChatSubscribeRequest) returns (stream ChatSubscribeResponse);
+}
