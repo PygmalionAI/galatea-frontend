@@ -19,8 +19,7 @@ type messagesTable struct {
 	// Columns
 	ID        postgres.ColumnString
 	ChatID    postgres.ColumnString
-	UserID    postgres.ColumnString
-	BotID     postgres.ColumnString
+	Sender    postgres.ColumnString
 	Content   postgres.ColumnString
 	CreatedAt postgres.ColumnTimestamp
 
@@ -65,12 +64,11 @@ func newMessagesTableImpl(schemaName, tableName, alias string) messagesTable {
 	var (
 		IDColumn        = postgres.StringColumn("id")
 		ChatIDColumn    = postgres.StringColumn("chat_id")
-		UserIDColumn    = postgres.StringColumn("user_id")
-		BotIDColumn     = postgres.StringColumn("bot_id")
+		SenderColumn    = postgres.StringColumn("sender")
 		ContentColumn   = postgres.StringColumn("content")
 		CreatedAtColumn = postgres.TimestampColumn("created_at")
-		allColumns      = postgres.ColumnList{IDColumn, ChatIDColumn, UserIDColumn, BotIDColumn, ContentColumn, CreatedAtColumn}
-		mutableColumns  = postgres.ColumnList{ChatIDColumn, UserIDColumn, BotIDColumn, ContentColumn, CreatedAtColumn}
+		allColumns      = postgres.ColumnList{IDColumn, ChatIDColumn, SenderColumn, ContentColumn, CreatedAtColumn}
+		mutableColumns  = postgres.ColumnList{ChatIDColumn, SenderColumn, ContentColumn, CreatedAtColumn}
 	)
 
 	return messagesTable{
@@ -79,8 +77,7 @@ func newMessagesTableImpl(schemaName, tableName, alias string) messagesTable {
 		//Columns
 		ID:        IDColumn,
 		ChatID:    ChatIDColumn,
-		UserID:    UserIDColumn,
-		BotID:     BotIDColumn,
+		Sender:    SenderColumn,
 		Content:   ContentColumn,
 		CreatedAt: CreatedAtColumn,
 

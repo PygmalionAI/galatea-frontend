@@ -14,7 +14,7 @@ import (
 
 type Chats struct {
 	ID        uuid.UUID `sql:"primary_key"`
-	UserID    uuid.UUID
+	UserID    *uuid.UUID
 	BotID     *uuid.UUID
 	CreatedAt time.Time
 }

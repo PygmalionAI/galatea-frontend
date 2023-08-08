@@ -4,17 +4,17 @@ package galatea.v1;
 
 option go_package = "shared/go/pb/galatea/v1;galateav1";
 
-enum ChatterType {
-  CHATTER_TYPE_UNSPECIFIED = 0;
-  CHATTER_TYPE_USER = 1;
-  CHATTER_TYPE_BOT = 2;
+enum SenderType {
+  SENDER_TYPE_UNSPECIFIED = 0;
+  SENDER_TYPE_USER = 1;
+  SENDER_TYPE_BOT = 2;
 }
 
 message ChatMessage {
   string id = 1;
-  ChatterType chatter = 4;
-  string message = 5;
-  int64 created_at = 6;
+  SenderType sender = 2;
+  string message = 3;
+  int64 created_at = 4;
 }
 
 message Chat {
@@ -51,10 +51,8 @@ message ChatSubscribeRequest {
 }
 message ChatSubscribeResponse {
   string id = 1;
-  string user_id = 2;
-  string bot_id = 3;
-  ChatterType chatter = 4;
-  string message = 5;
+  SenderType sender = 2;
+  string message = 3;
 }
 message ChatSendMessageRequest {
   string chat_id = 1;

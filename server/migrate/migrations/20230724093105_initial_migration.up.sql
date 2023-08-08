@@ -25,28 +25,21 @@ CREATE TABLE bots (
 -- chats table
 CREATE TABLE chats (
     id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
-
+    user_id UUID NULL REFERENCES users(id),
+    bot_id UUID NULL REFERENCES bots(id),
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
-DROP TYPE IF EXISTS chat_user;
-CREATE TYPE chat_user AS ENUM ('user', 'bot');
+
+DROP TYPE IF EXISTS CHAT_USER;
+CREATE TYPE CHAT_USER AS ENUM ('user', 'bot');
 
 -- messages table
 CREATE TABLE messages (
     id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
     chat_id UUID NOT NULL REFERENCES chats(id),
-    user_id UUID NULL REFERENCES users(id),
-    bot_id UUID NULL REFERENCES bots(id),
 
-    speaker chat_user NOT NULL,
-    
+    sender CHAT_USER NOT NULL,
     content TEXT NOT NULL,
  
-    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    
-    -- check for either having bot_id or user_id
-    CHECK (
-        (bot_id IS NOT NULL AND user_id IS NULL) OR
-        (bot_id IS NULL AND user_id IS NOT NULL)
-    )
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );

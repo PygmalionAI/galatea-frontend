@@ -15,12 +15,6 @@ message BotAllRequest {}
 message BotAllResponse {
   repeated Bot bots = 1;
 }
-message BotGetRequest {
-  string id = 1;
-}
-message BotGetResponse {
-  Bot bots = 1;
-}
 message BotCreateRequest {
   string id = 1;
   Bot bot = 2;
@@ -44,7 +38,6 @@ message BotDeleteResponse {
 
 service BotService {
   rpc BotAll(BotAllRequest) returns (BotAllResponse);
-  rpc BotGet(BotGetRequest) returns (BotGetResponse);
   rpc BotCreate(BotCreateRequest) returns (BotCreateResponse);
   rpc BotUpdate(BotUpdateRequest) returns (BotUpdateResponse);
   rpc BotDelete(BotDeleteRequest) returns (BotDeleteResponse);

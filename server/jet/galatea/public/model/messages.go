@@ -15,8 +15,7 @@ import (
 type Messages struct {
 	ID        uuid.UUID `sql:"primary_key"`
 	ChatID    uuid.UUID
-	UserID    *uuid.UUID
-	BotID     *uuid.UUID
+	Sender    ChatUser
 	Content   string
 	CreatedAt time.Time
 }
