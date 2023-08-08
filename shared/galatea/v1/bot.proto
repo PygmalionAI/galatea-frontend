@@ -9,7 +9,6 @@ message Bot {
   string name = 2;
   string description = 3;
   string avatar_url = 4;
-  string owner_id = 6;
 }
 message BotAllRequest {}
 message BotAllResponse {

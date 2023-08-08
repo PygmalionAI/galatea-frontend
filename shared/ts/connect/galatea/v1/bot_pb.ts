@@ -30,11 +30,6 @@ export class Bot extends Message<Bot> {
    */
   avatarUrl = "";
 
-  /**
-   * @generated from field: string owner_id = 6;
-   */
-  ownerId = "";
-
   constructor(data?: PartialMessage<Bot>) {
     super();
     proto3.util.initPartial(data, this);
@@ -47,7 +42,6 @@ export class Bot extends Message<Bot> {
     { no: 2, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 3, name: "description", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 4, name: "avatar_url", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 6, name: "owner_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Bot {
