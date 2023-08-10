@@ -1,0 +1,20 @@
+---
+name: "Deploy Server"
+on:
+  push:
+    branches:
+      - feat/ci
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone repo
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Deploy server
+        uses: dokku/github-action@master
+        with:
+          branch: master
+          git_remote_url: "ssh://dokku@${{ vars.DOKKU_HOST }}/galatea-server"
+          ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
